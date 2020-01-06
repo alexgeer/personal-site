@@ -16,17 +16,28 @@ let Section1 = styled.section`
   margin: auto;
   text-align: center;
   height: 100vh;
-  padding-top: 40vh;
   width: 100%;
-
+  padding-top: 20vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   color: whitesmoke;
+  #name {
+      color: cornsilk;
+      font-size: 38px;
+    }
+  h1 {
+    font-size: 52.35px;
+    padding-bottom: 50px;
 
-  h1 {font-size: 52.35px;}
-  h2 {font-size: 32.36px;}
-  h3 {font-size: 20px;}
+
+  }
+  h2 {
+    padding-bottom: 80.9px;
+    font-size: 32.36px;
+  }
+  h3 {
+    font-size: 20px;
+  }
 
   text-shadow: 1px 1px 5px rgba(206,206,206,0.62);
   .spinner {
@@ -34,12 +45,18 @@ let Section1 = styled.section`
     position: relative;
     top: 30%;
   }
+
+  @media only screen and (min-width:600px)
+  {
+    padding-top: 40vh;
+
+  }
 `;
 
 let LearnMore = styled.button`
   width: 150px;
   height: 50px;
-  margin: 0 auto 40px auto;
+  margin: 10vh auto 40px auto;
   background: transparent;
   border: 1px solid white;
   transition: 0.2s ease;
@@ -153,7 +170,7 @@ let Section2 = ({refProp}) => {
   return (
     <Section2Wrapper id="second">
       <div ref={refProp} id="block1"></div>
-      <div style={{color:color1}} id="block2">EVERYTHING</div>
+      <div style={{color:color1}} id="block2">ANTI</div>
       <div style={{color:color2}} id="block3">DREAM</div>
       <div id="block4"></div>
     </Section2Wrapper>
@@ -177,7 +194,7 @@ function Home() {
       <Section1 id="top">
         {/* <Spinner text={"Welcome to My WonderFul Website :)"}></Spinner> */}
         <h1>HELLO.</h1>
-        <h2>MY NAME IS ALEX GEER.</h2>
+        <h2>MY NAME IS <span id='name'>ALEX GEER</span>.</h2>
         <h3>I LOVE TO WRITE ELEGANT LINES OF CODE AND CREATE SIMPLE, PLEASING DESIGNS.</h3>
         <LearnMore onClick={executeScroll}>
           Learn More
