@@ -56,7 +56,7 @@ let Section1 = styled.section`
 let LearnMore = styled.button`
   width: 150px;
   height: 50px;
-  margin: 10vh auto 40px auto;
+  margin: 15px auto;
   background: transparent;
   border: 1px solid white;
   transition: 0.2s ease;
@@ -107,8 +107,8 @@ let Section2Wrapper = styled.section`
   @media screen and (min-width: 600px) {
     div {
       padding-top: 0;
-      font-size: 17vw;
-      line-height:15vw;
+      font-size: 25git vh;
+      line-height:25git vh;
       width: 50%;
       height: 50%;
     }
