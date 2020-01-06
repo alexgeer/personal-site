@@ -141,16 +141,18 @@ let Section2Wrapper = styled.section`
   }
 
   /* 1 and 4 get their bg images */
-  #block1 {    background-position: 0% 0%; /* Center the image */
-  background-size:cover;
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-image: url("images/city-crop-1.jpg");
+  #block1 {
+    background-attachment: fixed;
+background-size:cover;
+background-position: 50% 60%;
+    background-image: url("images/city2.jpg");
   }
 
-  #block4 {    
-    background-repeat: no-repeat; /* Do not repeat the image */
+  #block4 {
+    background-attachment: fixed;
     background-size:cover;
-    background-image: url("images/city-crop-2.jpg");
+    background-position: 50% 60%;
+    background-image: url("images/city2.jpg");
   }
 
 
@@ -238,7 +240,7 @@ function Home() {
         {/* <Spinner text={"Welcome to My WonderFul Website :)"}></Spinner> */}
         <h1>HELLO.</h1>
         <h2>MY NAME IS <span id='name'>ALEX GEER</span>.</h2>
-        <h3>I LOVE TO WRITE ELEGANT LINES OF CODE AND CREATE SIMPLE, PLEASING DESIGNS.</h3>
+        <h3>I LIKE TO WRITE ELEGANT LINES OF CODE AND CREATE SIMPLE, PLEASING DESIGNS.</h3>
         <LearnMore onClick={executeScroll}>
           Learn More
           <i className="fa fa-angle-double-right"></i>

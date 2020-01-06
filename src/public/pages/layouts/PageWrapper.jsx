@@ -17,6 +17,15 @@ padding: 80px 15px 15px 15px;
   h3 {
       font-size: 40px;
   }
+
+  h4{
+    font-size: 30px;
+  }
+
+  h5 {
+    font-size: 20px;
+    color: white;
+  }
 p{
     margin: 25px;
     color:white;
