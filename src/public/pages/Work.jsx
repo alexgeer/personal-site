@@ -9,7 +9,8 @@ align-items: top;
 justify-content: left;
 
 img {
-  width: 45%;
+  width: 100%;
+  height: auto;
   padding: 2%;
 }
 `

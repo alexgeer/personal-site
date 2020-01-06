@@ -83,16 +83,39 @@ let Section2Wrapper = styled.section`
   height: 100vh;
   display: flex;
   flex-wrap: wrap;
-  font-size: 100px;
 
   div {
-    text-align: center;
-    display: flex;
+    width: 100%;
+    height: 25%;
+
     font-weight: 600;
-    justify-content: center;
-    align-items: center;
+    font-size: 20vw;
+    line-height: 18vw;
+        text-align: center;
+    padding-top:30px;
+
+    margin: 0 auto;
+
+    overflow: hidden;
+    overflow-wrap: break-word;
+    word-wrap:break-word;
+    white-space:wrap;
+
   }
 
+  /* make a 2X2 grid on desktops */
+  @media screen and (min-width: 600px) {
+    div {
+      padding-top: 0;
+      font-size: 17vw;
+      line-height:15vw;
+      width: 50%;
+      height: 50%;
+    }
+  }
+
+  
+  /*TODO: fix this  */
   @media screen and (max-width: 600px) {
     #block3 {
       order: 4;
@@ -130,25 +153,42 @@ let Section2Wrapper = styled.section`
     background-image: url("images/city-crop-2.jpg");
   }
 
-  /* so divs will stack in the flexbox */
-  div {
-    width: 100%;
-    height: 25%;
-  }
 
-  /* make a 2X2 grid on desktops */
-  @media screen and (min-width: 600px) {
-    div {
-      width: 50%;
-      height: 50%;
-    }
-  }
 `;
+
+const words =  
+[
+  'YOU',
+  'RESULTS',
+  'HEALTH',
+  'GUARANTEE',
+  'DISCOVER',
+  'PROVEN',
+  'SAFETY',
+  'SAVE',
+  'NEW',
+  'BEST',
+  'NOW',
+  'FREE',
+  'INCREASE',
+  'TRY',
+  'OPPORTUNITY',
+  'EASIEST',
+  'COMPARE',
+  'UNIQUE'
+]
+
+const randomRbg = () => Math.floor(Math.random()*1000%255)
+const randomWord = () => words[Math.floor(Math.random()*100%words.length)]
 
 let Section2 = ({refProp}) => {
  //colors for the section2 blocks
  let [color1, setColor1] = useState('rgb(100,100,100)')
  let [color2, setColor2] = useState('rgb(200,200,200)')
+
+
+ let [word1, setWord1] = useState(words[0])
+ let [word2, setWord2] = useState(words[words.length-1])
 
  //this will execute when the component mounts
  useEffect( () => {
@@ -156,9 +196,13 @@ let Section2 = ({refProp}) => {
      setColor1(`rgb(${randomRbg()},${randomRbg()},${randomRbg()})`)
      setColor2(color1)
 
+     setWord1(randomWord())
+     setWord2(randomWord())
+     console.log(randomWord())
+
    }
 
-   const interval = setInterval(() => timerReaction(), 250)
+   const interval = setInterval(() => timerReaction(), 500)
 
    //this will execute when the component unmounts
    return () => {
@@ -170,8 +214,8 @@ let Section2 = ({refProp}) => {
   return (
     <Section2Wrapper id="second">
       <div ref={refProp} id="block1"></div>
-      <div style={{color:color1}} id="block2">ANTI</div>
-      <div style={{color:color2}} id="block3">DREAM</div>
+      <div style={{color:color1}} id="block2">{word1}</div>
+      <div style={{color:color2}} id="block3">{word2}</div>
       <div id="block4"></div>
     </Section2Wrapper>
   );
@@ -179,7 +223,6 @@ let Section2 = ({refProp}) => {
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)   
 
-const randomRbg = () => Math.floor(Math.random()*1000%255)
 
 function Home() {
   const scrollRef = useRef(null);

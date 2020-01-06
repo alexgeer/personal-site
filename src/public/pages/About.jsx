@@ -7,9 +7,7 @@ function About() {
     <PageWrapper>
       <h2>About</h2>
       <div>
-        <p>i am Alex Geer, i have a CS degree from University of North Florida. </p>
-         <p>from a young age, i always wanted to know <em><strong>"what makes the computer work :P "</strong></em> </p> 
-         <p> i enjoy rock climbing and playing music also. </p>
+        <p>i have a CS degree from University of North Florida. </p>
       </div>
     </PageWrapper>)
   }
