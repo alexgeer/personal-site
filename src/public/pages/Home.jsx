@@ -107,8 +107,8 @@ let Section2Wrapper = styled.section`
   @media screen and (min-width: 600px) {
     div {
       padding-top: 0;
-      font-size: 25git vh;
-      line-height:25git vh;
+      font-size: 25vh;
+      line-height:25vh;
       width: 50%;
       height: 50%;
     }
