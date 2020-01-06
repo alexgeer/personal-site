@@ -39,7 +39,8 @@ function Work() {
             80-90% of the original code, including a new DB schema.
           </p>
           <p>The front end was made with React. 
-            I wrote all the reusable form input components, using Bootstrap for styling.
+            I wrote all the reusable form input components, using Bootstrap for styling. The main learning
+            experience here was using different types of inputs and validating form data.
           </p>
           <p>
             I wrote most of the backend, including the server and the registration/payment module.
@@ -49,12 +50,12 @@ function Work() {
             Payment processing was handled by a module my boss wrote. The client later asked for an automated
             marketing email system, which I wrote as well.
           </p>
-
+{/* 
           <Gallery>
             <img src="images/tbc1.png" alt=""/>
             <img src="images/tbc2.png" alt=""/>
             <img src="images/tbc3.png" alt=""/>
-          </Gallery>
+          </Gallery> */}
       </div>
     </PageWrapper>)
   }
