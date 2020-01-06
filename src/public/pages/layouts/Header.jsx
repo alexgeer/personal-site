@@ -172,7 +172,7 @@ function Header({ routes, timing }) {
   let handleScroll = () => {
 
     const currentScrollPos = window.pageYOffset;
-    setVisible(prevScrollPosition > currentScrollPos);
+    setVisible(prevScrollPosition > currentScrollPos | currentScrollPos <= 0);
     setPrevScrollPosition(currentScrollPos);
   };
 
