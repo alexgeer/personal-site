@@ -13,7 +13,7 @@ module.exports = {
       ]
     },
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.mjs','.js', '.jsx']
     },
     output: {
          path: path.join(__dirname, 'src', 'dist')
