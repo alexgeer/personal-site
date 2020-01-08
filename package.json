@@ -21,6 +21,7 @@
     "webpack-cli": "^3.3.10"
   },
   "dependencies": {
+    "aws-amplify": "^2.2.1",
     "express": "^4.17.1",
     "livereload": "^0.8.2",
     "moment": "^2.24.0",

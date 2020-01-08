@@ -7,11 +7,11 @@ import routes from "./routes";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Amplify, { API } from 'aws-amplify';
-import awsconfig from './aws-exports';
+import awsconfig from '../aws-exports';
 
 Amplify.configure(awsconfig);
 
-const apiTest = () =>
+const apiTest = async () =>
 {
   try {
 
