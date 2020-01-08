@@ -11,7 +11,7 @@ import Amplify, { API } from "aws-amplify";
 import awsconfig from "../aws-exports";
 
 Amplify.configure(awsconfig);
-
+const secretMessage ='please hire mme'
 const apiTest = () => {
   let test = async () => {
     try {
