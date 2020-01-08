@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/ticks",
+            "lambdaFunction": "mp",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "api",
+    "apiName": "api",
+    "functionArns": [
+        {
+            "lambdaFunction": "mp"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-personal-site-prod-182931-authRole",
+        "unAuthRoleName": "amplify-personal-site-prod-182931-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "mp",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
