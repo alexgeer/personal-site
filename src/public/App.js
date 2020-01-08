@@ -18,7 +18,7 @@ const apiTest = () => {
       const data = await API.get("mp", "/ticks");
       console.log(data | "no data");
     } catch (err) {
-      console.log("error fetching from Lambda API");
+      console.log(err, "error fetching from Lambda API");
     }
   };
   test();
