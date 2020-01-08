@@ -6,21 +6,21 @@ import { Header, Main } from "./pages/layouts";
 import routes from "./routes";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Amplify, { API } from 'aws-amplify';
-import awsconfig from '../aws-exports';
+// import Amplify, { API } from 'aws-amplify';
+// import awsconfig from '../aws-exports';
 
-Amplify.configure(awsconfig);
+// Amplify.configure(awsconfig);
 
-const apiTest = async () =>
-{
-  try {
+// const apiTest = async () =>
+// {
+//   try {
 
-    const data = await API.get('mp', '/ticks')
-    console.log(data | 'no data')
-  } catch (err) {
-    console.log('error fetching from Lambda API')
-  }
-}
+//     const data = await API.get('mp', '/ticks')
+//     console.log(data | 'no data')
+//   } catch (err) {
+//     console.log('error fetching from Lambda API')
+//   }
+// }
 
 const App = () => {
 
