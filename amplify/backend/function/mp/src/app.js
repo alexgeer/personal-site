@@ -10,6 +10,7 @@ var request = require("request");
 var express = require("express");
 var bodyParser = require("body-parser");
 var awsServerlessExpressMiddleware = require("aws-serverless-express/middleware");
+var mpAPI = require('./mpAPI')
 
 // declare a new express app
 var app = express();
@@ -31,127 +32,18 @@ app.use(function(req, res, next) {
  **********************/
 
 app.get("/ticks", function(req, res) {
-  // Add your code here
-  let key = "200482368-5035b32ae16f7fd445d1c8d37b38dc0e";
-  let arg =
-    "https://www.mountainproject.com/data/get-ticks" +
-    "?email=geer.alex@gmail.com" +
-    "&key=" +
-    key;
-
-  request(arg, (err1, res1, body1) => {
-    if(err1)
-      res.json(err1)
-      
-    let ticks;
-
-    try {
-      ticks = JSON.parse(r.body);
-    } catch (err) {
-      res.json({ err });
-    }
-
-    let routeIds = "";
-
-    routeIds +=
-      ticks.ticks[0].routeId +
-      "," +
-      ticks.ticks[1].routeId +
-      "," +
-      ticks.ticks[2].routeId +
-      "," +
-      ticks.ticks[3].routeId;
-
-    let routesArg =
-      "https://www.mountainproject.com/data/getRoutes?" +
-      "routeIds=" +
-      routeIds +
-      "&key=" +
-      key;
-    
-    request(routesArg, (err2, res2, body2) => {
-      if(err2)
-        res.json(err2)
-        
-      try {
-        let routes = JSON.parse(res.body);
-      } catch (err) {
-        res.json({ err });
+      try{
+        mpAPI( (ticks, routes) => 
+        {
+          res.json({ ticks, routes, url: req.url });
+        })
       }
-
-      try {
-        let climbs = [];
-        climbs[0] = {
-          tick: ticks[0],
-          route: routes[0]
-        };
-        climbs[1] = {
-          tick: ticks[1],
-          route: routes[1]
-        };
-        climbs[2] = {
-          tick: ticks[2],
-          route: routes[2]
-        };
-        climbs[3] = {
-          tick: ticks[3],
-          route: routes[3]
-        };
-      } catch (err) {
-        res.json({ err });
+      catch (err)
+      {
+        res.json(err)
       }
-
-      res.json({ climbs, url: req.url });
-    });
-  });
 });
 
-app.get("/ticks/*", function(req, res) {
-  // Add your code here
-  res.json({ success: "get call succeed!", url: req.url });
-});
-
-/****************************
- * Example post method *
- ****************************/
-
-app.post("/ticks", function(req, res) {
-  // Add your code here
-  res.json({ success: "post call succeed!", url: req.url, body: req.body });
-});
-
-app.post("/ticks/*", function(req, res) {
-  // Add your code here
-  res.json({ success: "post call succeed!", url: req.url, body: req.body });
-});
-
-/****************************
- * Example put method *
- ****************************/
-
-app.put("/ticks", function(req, res) {
-  // Add your code here
-  res.json({ success: "put call succeed!", url: req.url, body: req.body });
-});
-
-app.put("/ticks/*", function(req, res) {
-  // Add your code here
-  res.json({ success: "put call succeed!", url: req.url, body: req.body });
-});
-
-/****************************
- * Example delete method *
- ****************************/
-
-app.delete("/ticks", function(req, res) {
-  // Add your code here
-  res.json({ success: "delete call succeed!", url: req.url });
-});
-
-app.delete("/ticks/*", function(req, res) {
-  // Add your code here
-  res.json({ success: "delete call succeed!", url: req.url });
-});
 
 app.listen(3000, function() {
   console.log("App started");

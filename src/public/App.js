@@ -12,22 +12,9 @@ import awsconfig from "../aws-exports";
 
 Amplify.configure(awsconfig);
 const secretMessage ='please hire mme'
-const apiTest = () => {
-  let test = async () => {
-    try {
-      const data = await API.get("api", "/ticks");
-      console.log(data | "no data");
-      console.log('succ')
-    } catch (err) {
-      console.log(err, "error fetching from Lambda API");
-    }
-  };
-  test();
 
-};
 
 const App = () => {
-  useEffect(apiTest);
   return (
     <div>
       <Header routes={routes} />
