@@ -200,7 +200,6 @@ let Section2 = ({refProp}) => {
 
      setWord1(randomWord())
      setWord2(randomWord())
-     console.log(randomWord())
 
    }
 

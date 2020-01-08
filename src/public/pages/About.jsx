@@ -28,8 +28,8 @@ function About() {
         </p>
         <p>
           I've written systems level software, desktop applications, and web applications, but most recently my
-          wheelhouse has been in web development. This seems to be a domain where, in response to the ever increasing
-          ubiquity of networked devices, the tools at our disposal have been undergoing a rapid and 
+          wheelhouse has been in web development. This seems to be a domain where, seemingly in response to the ever increasing
+          ubiquity of networked devices, the development tools at our disposal have been undergoing a rapid and 
           exciting evolution over the last decade. A streamlined, power hungry Javascript with its front/back-end frameworks, 
           cloud services offering teams incredible agility, and a collaborative and mutually supportive culture all make 
           it an attractive area of focus. The entire industry is at its core truly a collective effort, and I look forward to 
