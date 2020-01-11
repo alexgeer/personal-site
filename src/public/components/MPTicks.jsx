@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { API } from "aws-amplify";
-const mpApiCall = () => {
-  let call = async () => {
-    try {
-      const data = await API.get("api", "/ticks");
-      console.log(data);
-    } catch (err) {}
-  };
-};
+import getAPI from './DynamicAPI'
+import Spinner from './LoadingSpinner'
 
-let Tick = ({ tick }) => (
+
+const Tick = ({ tick }) => (
   <li>
     <ul>
       <li><h4> {tick.route.name} -- {tick.route.type} -- {tick.route.rating}</h4></li>
@@ -24,27 +18,36 @@ let Tick = ({ tick }) => (
   </li>
 );
 
-let Container = () => {
-  let [ticks, setTicks] = useState([]);
-  let [routes, setRoutes] = useState([]);
 
-  console.log(ticks);
+const Container = () => {
+  let [ticks, setTicks] = useState([]);
+  let [loading, setLoading] = useState(true)
 
   useEffect(() => {
     //we have to define the async func w/i the hook
     let call = async () => {
       try {
-        const data = await API.get("api", "/ticks");
-        console.log(data);
+
+        //call dynamic import
+        /**
+         * since the API call only happens in this component we can
+         * greatly diminish the bundle size (33%!!) by splitting the AWS modules import off in its own file
+         */
+        const API = await getAPI()
+        let data = await API.get("api", "/ticks")
+
+        //map the routes to the ticks
         data.ticks.forEach(t => {
           let found = data.routes.find(r => r.id === t.routeId);
           //add the route to the tick
           t.route = found;
         });
 
+        //update state
         setTicks(data.ticks);
-        console.log(ticks);
-      } catch (err) {}
+        // setLoading(false);
+
+      } catch (err) {console.error(err)}
     };
     //call it right aways
     call();
@@ -55,6 +58,9 @@ let Container = () => {
       <h3>Mountain Project Ticks</h3>
       <p>My four most recent climbs that I bothered to tick on Mountain Project, pulled from the MP data API</p>
       <p>This API call is made on the backend from an AWS lambda function</p>
+
+      {loading && <Spinner cnProp = {'spinner'}/>}
+
       <ul>
         {ticks.map(t => (
           <Tick tick={t} key={t.routeId} />
@@ -64,4 +70,11 @@ let Container = () => {
   );
 };
 
-export default Container;
+
+
+const StyledContainer = styled(Container)`
+color:purple;
+font-size: 300px;
+
+`
+export default StyledContainer
