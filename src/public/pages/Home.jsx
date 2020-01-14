@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Spinner from "../components/Spinner";
 
 let Wrapper = styled.div`
-  background-image: url("images/hallway-efe-kurnaz-min.jpg");
+  background-image: url("images/hallway-efe-kurnaz.jpg");
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
@@ -145,14 +145,14 @@ let Section2Wrapper = styled.section`
     background-attachment: fixed;
 background-size:cover;
 background-position: 50% 60%;
-    background-image: url("images/city2-min.jpg");
+    background-image: url("images/city2.jpg");
   }
 
   #block4 {
     background-attachment: fixed;
     background-size:cover;
     background-position: 50% 60%;
-    background-image: url("images/city2-min.jpg");
+    background-image: url("images/city2.jpg");
   }
 
 
