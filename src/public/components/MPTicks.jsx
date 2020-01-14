@@ -59,7 +59,7 @@ const Container = () => {
       <p>My four most recent climbs that I bothered to tick on Mountain Project, pulled from the MP data API</p>
       <p>This API call is made on the backend from an AWS lambda function</p>
 
-      {loading && <Spinner cnProp = {'spinner'}/>}
+      {/* {loading && <Spinner cnProp = {'spinner'}/>} */}
 
       <ul>
         {ticks.map(t => (
