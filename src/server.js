@@ -27,10 +27,10 @@ logger.log(`serving static files from ${staticPath}`)
 // Allows you to set port in the project properties.
 app.set('port', port);
 
-// app.get('/', (req, res) => {
-//     //send the scaffold file
-//     res.sendFile( path.join(__dirname, "index.html" ))
-// })
+app.get('/lol', (req, res) => {
+    //send the scaffold file
+    res.json({msg:'lol'})
+})
 
 // Handles any requests that don't match the ones above
 app.get('*', (req,res) =>{
