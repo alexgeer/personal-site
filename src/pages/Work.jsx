@@ -51,8 +51,8 @@ justify-content: center;
 a {
   font-size: 20px;
   text-decoration: underline;
-  color: #a0a0a0;
-  background: cornsilk;
+  color: ${({theme}) => theme.background};
+  background: ${({theme}) => theme.color1};
   border-radius: 8px;
   padding: 12px;
 

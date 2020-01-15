@@ -14,7 +14,7 @@ let Nav = styled.nav`
   display: flex;
 
   a {
-    color: cornsilk;
+    color: ${props => props.theme.color1};
   }
 
   @media only screen and (min-width: 600px) {
@@ -27,7 +27,7 @@ let Nav = styled.nav`
     width: 100%;
     height: 50px;
     padding: 0 10px;
-    background-color: rgba(160,160,160,0.6);
+    background-color: ${props => props.theme.navBackground};
 
     display: flex;
     flex-direction: row;
@@ -82,12 +82,12 @@ let BrandContainer = styled.div`
   animation: dropin 1s cubic-bezier(0.11, 0.82, 0.55, 0.97);
   text-decoration: overline;
   width: 20%;
-  background-color: rgba(160,160,160,0.6);
-
+  background-color: ${props => props.theme.navBackground};
   padding:5px 8px 0 8px;
   text-align:center;
   h2 {
   font-size:30px;
+  color: ${({theme}) => theme.color1}
   }
 
 
@@ -145,6 +145,7 @@ let BrandContainer = styled.div`
 `;
 
 const Container = styled.div`
+  padding-top: 8px;
   display: flex;
   justify-content: space-between;
   position: fixed;
@@ -156,6 +157,7 @@ const Container = styled.div`
 
   @media only screen and (min-width:600px)
   {
+    padding-top:0;
     width:75%;
 
   min-width:600px;

@@ -1,14 +1,14 @@
 import React, { useRef, useState, useEffect } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+import {fadeIn} from '../styles/anim'
+
 
 let Wrapper = styled.div`
-  background-image: url("images/hallway-efe-kurnaz.jpg");
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
-
-  /* ************************************************************************S */
-  /* the idea here is to have a 2X2 grid of divs on desktop, and 1x4 col on mobile */
+  background-image: url("images/hallway-efe-kurnaz-orig.jpg");
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  animation: ${fadeIn} 1s;
 `;
 
 let Section1 = styled.section`
@@ -19,9 +19,9 @@ let Section1 = styled.section`
   padding-top: 20vh;
   display: flex;
   flex-direction: column;
-  color: whitesmoke;
+  color: ${props => props.theme.landingTextColor};
   #name {
-      color: cornsilk;
+      color: ${props => props.theme.color1};
       font-size: 38px;
     }
   h1 {

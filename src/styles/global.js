@@ -27,7 +27,7 @@ export default createGlobalStyle`
   body {
     -webkit-font-smoothing: antialiased;
     color:	rgb(255, 255, 153);
-    background: #a0a0a0;
+    background: ${props => props.theme.background};
   }
 
   header {
@@ -42,7 +42,7 @@ export default createGlobalStyle`
 
   }
   a {
-    color:cornsilk;
+    color:${props => props.theme.color1};
     text-decoration: none;
   }
   ul {
