@@ -4,7 +4,7 @@ import {fadeIn} from '../styles/anim'
 
 
 let Wrapper = styled.div`
-  background-image: url("images/hallway-efe-kurnaz-orig.jpg");
+  background-image: url("images/hallway-efe-kurnaz.jpg");
   background-position: center; 
   background-repeat: no-repeat; 
   background-size: cover; 
