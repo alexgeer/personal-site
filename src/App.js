@@ -4,17 +4,19 @@ import GlobalStyles from "./styles/global";
 
 import { Header, Main } from "./pages/layouts";
 import routes from "./routes";
+import ScrollToTop from './components/ScrollToTop'
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 
 
-const secretMessage ='please hire mme'
+window.secretMessage ='please hire mme'
 
 
 const App = () => {
   return (
     <div>
+      <ScrollToTop/>
       <Header routes={routes} />
       <Main className="main">
         <Switch>

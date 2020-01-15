@@ -44,13 +44,19 @@ let Stack = () => {
   );
 };
 
-let ResumeDL = styled.a`
+let ResumeDL = styled.div`
+margin: 20px auto;
+display:flex;
+justify-content: center;
+a {
   font-size: 20px;
   text-decoration: underline;
   color: #a0a0a0;
   background: cornsilk;
   border-radius: 8px;
   padding: 12px;
+
+}
   i {
     margin-left: 8px;
   }
@@ -61,9 +67,9 @@ function Work() {
   return (
     <PageWrapper>
       <h2>Work</h2>
-      <ResumeDL href="pdf/AlexGeerResume.pdf" download>
+      <ResumeDL> <a href="pdf/AlexGeerResume.pdf" download>
         AlexGeerResume.pdf
-        <i className="fas fa-file-download"></i>
+        <i className="fas fa-file-download"></i></a>
       </ResumeDL>
       <div>
         <h3>Innovias | Web Developer Intern | July 2018 - March 2019</h3>
