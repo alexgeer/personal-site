@@ -21,7 +21,7 @@ module.exports = function(env, argv) {
         extensions: ['.mjs','.js', '.jsx']
     },
     output: {
-         path: path.join(__dirname, 'src', 'dist'),
+         path: path.join(__dirname, 'dist'),
          chunkFilename: '[name].bundle.js',
        }
   }

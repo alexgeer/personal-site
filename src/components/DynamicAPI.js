@@ -1,5 +1,5 @@
 
-import awsconfig from "../../aws-exports";
+import awsconfig from "../aws-exports";
 
 
 function getAmplify () 

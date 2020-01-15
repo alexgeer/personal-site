@@ -151,7 +151,7 @@ const Container = styled.div`
   z-index: 1;
   /* scroll hiding */
   top: 0;
-  transition: top 0.5s ease-in;
+  transition: top 1s linear;
   width:100%;
 
   @media only screen and (min-width:600px)

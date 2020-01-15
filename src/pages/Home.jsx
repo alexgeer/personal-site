@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
-import Spinner from "../components/Spinner";
 
 let Wrapper = styled.div`
   background-image: url("images/hallway-efe-kurnaz.jpg");
@@ -15,7 +14,7 @@ let Wrapper = styled.div`
 let Section1 = styled.section`
   margin: auto;
   text-align: center;
-  height: 100vh;
+  height: ${window.innerHeight}px; 
   width: 100%;
   padding-top: 20vh;
   display: flex;

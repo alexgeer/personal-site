@@ -20,9 +20,10 @@ if(process.env.NODE_ENV === 'development')
 }
 
 
-var staticPath = path.join(__dirname, 'dist');
-app.use(express.static(staticPath));
-logger.log(`serving static files from ${staticPath}`)
+app.use(express.static( path.join(__dirname, '../assets')));
+app.use(express.static( path.join(__dirname, '../dist')));
+
+logger.log(`serving static files from /assets /dist`)
 
 // Allows you to set port in the project properties.
 app.set('port', port);
@@ -35,7 +36,7 @@ app.get('/lol', (req, res) => {
 // Handles any requests that don't match the ones above
 app.get('*', (req,res) =>{
     logger.log('get', req.ip)
-    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+    res.sendFile(path.join(__dirname, '../assets', 'index.html'));
 });
 
 const server = app.listen(app.get('port'), function() {
