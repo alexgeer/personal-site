@@ -5,22 +5,21 @@ import { fadeIn } from "../styles/anim";
 let Wrapper = styled.div`
   &.loading {
     transform: translateZ(0);
-  background-image: filter("images/hallway-efe-kurnaz-min.jpg");
-  filter: blur(20px);
+  background-image: url("images/hallway-efe-kurnaz-min.jpg");
+  filter:blur(20px);
   }
 
   &.loaded {
     animation: sharpen .7s both;
   @keyframes sharpen {
     from {
-      background-image: filter("images/hallway-efe-kurnaz-min.jpg");
-
+      background-image: url("images/hallway-efe-kurnaz-min.jpg");
       filter: blur(20px);
     }
     to {
-      background-image: filter("images/hallway-efe-kurnaz.jpg");
-
       filter: blur(0px);
+      background-image: url("images/hallway-efe-kurnaz.jpg");
+
     }
   }
   
@@ -29,7 +28,6 @@ let Wrapper = styled.div`
   background-position: center; 
   background-repeat: no-repeat; 
   background-size: cover; 
-  animation: ${fadeIn} 1.2s;
 `;
 
 let Section1 = styled.section`
