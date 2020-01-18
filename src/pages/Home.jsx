@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import { fadeIn } from "../styles/anim";
 
+
 let Wrapper = styled.div`
   &.loading {
     transform: translateZ(0);
@@ -38,9 +39,9 @@ let Section1 = styled.section`
   padding-top: 20vh;
   display: flex;
   flex-direction: column;
-  color: ${props => props.theme.landingTextColor};
+  color: ${(props) => props.theme.landingTextColor};
   #name {
-    color: ${props => props.theme.color1};
+    color: ${(props) => props.theme.color1};
     font-size: 38px;
   }
   h1 {
@@ -228,18 +229,20 @@ let Section2 = ({ refProp }) => {
   );
 };
 
-const scrollToRef = ref => window.scrollTo(0, ref.current.offsetTop);
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
-function Home() {
+
+const mapStateToProps = (state, ownProps) => ({
+  // ... computed data from state and optionally ownProps
+})
+
+const mapDispatchToProps = {
+  // ... normally is an object full of action creators
+}
+
+
+function Home({loading}) {
   const scrollRef = useRef(null);
-  let [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    let timer = setTimeout(()=> setLoading(false), 1000)
-
-    //cleanup
-    return () => clearTimeout(timer)
-  }, [])
 
   const executeScroll = () => scrollToRef(scrollRef);
 

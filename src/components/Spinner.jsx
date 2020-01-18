@@ -7,7 +7,7 @@ let SpinningText = styled.h2`
   animation-name: spin, depth;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-  animation-duration: ${props => 200 / props.speed}s;
+  animation-duration: ${(props) => 200 / props.speed}s;
   text-align: center;
   font-size: 60px;
   color: rgb(19, 224, 224);
@@ -135,7 +135,7 @@ let Slider = ({ handleChange, speed, labelText }) => {
 
 let Spinner = ({ text }) => {
   let [speed, setSpeed] = useState(20);
-  let handleChange = event => setSpeed(event.target.value);
+  let handleChange = (event) => setSpeed(event.target.value);
 
   return (
     <Container className="spinner">

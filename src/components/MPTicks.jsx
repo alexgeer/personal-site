@@ -1,43 +1,107 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import getAPI from './DynamicAPI'
-import Spinner from './LoadingSpinner'
+import getAPI from "./DynamicAPI";
+import Spinner from "./LoadingSpinner";
+
+const TickItem = styled.li``;
+
+let Container = styled.div`
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-bottom: 30px;
+  @media only screen and (min-width: 600px) {
+    width: 75%;
+    min-width: 550px;
+  }
 
 
-const Tick = ({ tick }) => (
-  <li>
-    <ul>
-      <li><h4> {tick.route.name} -- {tick.route.type} -- {tick.route.rating}</h4></li>
-<li><h5>{tick.route.location.join(' | ')}</h5></li>
-      <li><p>Date: {tick.date} </p></li>
-      <li><p>My notes: {tick.notes} </p></li>
-      <li>
-        <img src={tick.route.imgSmall}  />{" "}
-      </li>
-    </ul>
+  p {
+    margin: 0;
+  }
+`;
+
+const TickList = styled.ul`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+
+
+`;
+
+const Thumbnail = props => (
+  <li className={props.className}>
+    <img className="shadow-4" src={props.src} alt="" />
   </li>
 );
 
+const StyledThumbnail = styled(Thumbnail)`
+  width: 200px;
+  height: 200px;
+  padding:10px;
+  margin: 0 5px;
 
-const Container = () => {
-  let [ticks, setTicks] = useState([]);
-  let [loading, setLoading] = useState(true)
   
-  let mounted = false
+  border-radius: 5px;
+
+  img {
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    display: block
+  }
+`;
+
+const Tick = ({ tick, selected }) => {
+  if (selected)
+    return (
+      <TickItem>
+        <ul>
+          <li>
+            <h4>
+              {" "}
+              {tick.route.name} -- {tick.route.type} -- {tick.route.rating}
+            </h4>
+          </li>
+          <li>
+            <h5>{tick.route.location.join(" | ")}</h5>
+          </li>
+          <li>
+            <p>Date: {tick.date} </p>
+          </li>
+          <li>
+            <p>My notes: {tick.notes} </p>
+          </li>
+          <li>
+            <img src={tick.route.imgSmall} />{" "}
+          </li>
+        </ul>
+      </TickItem>
+    );
+
+  return <StyledThumbnail className={'thumbnail'} src={tick.route.imgSmall} />;
+};
+
+const MPTicks = () => {
+  let [ticks, setTicks] = useState([]);
+  let [loading, setLoading] = useState(true);
+
+  let mounted = false;
 
   useEffect(() => {
-    mounted = true
+    mounted = true;
     //we have to define the async func w/i the hook
     let call = async () => {
       try {
-
         //call dynamic import
         /**
          * since the API call only happens in this component we can
          * greatly diminish the bundle size (33%!!) by splitting the AWS modules import off in its own file
          */
-        const API = await getAPI()
-        let data = await API.get("api", "/ticks")
+        const API = await getAPI();
+        let data = await API.get("api", "/ticks");
 
         //map the routes to the ticks
         data.ticks.forEach(t => {
@@ -47,39 +111,42 @@ const Container = () => {
         });
 
         //update state
-        if(mounted)
-          setTicks(data.ticks);
+        if (mounted) setTicks(data.ticks);
         // setLoading(false);
-
-      } catch (err) {console.error(err)}
+      } catch (err) {
+        console.error(err);
+      }
     };
     //call it right aways
     call();
-    return () => {mounted=false}
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   return (
-    <div>
+    <Container className="shadow-2">
       <h3>Mountain Project API - My Climbs</h3>
-      <p>My four most recent climbs that I bothered to tick on Mountain Project, pulled from the <a href="https://www.mountainproject.com/data">MP data API</a></p>
+      <p>
+        My four most recent climbs that I bothered to tick on Mountain Project,
+        pulled from the{" "}
+        <a href="https://www.mountainproject.com/data">MP data API</a>
+      </p>
       <p>This API call is made on the backend from an AWS lambda function</p>
 
       {/* {loading && <Spinner cnProp = {'spinner'}/>} */}
 
-      <ul>
+      <TickList>
         {ticks.map(t => (
-          <Tick tick={t} key={t.routeId} />
+          <Tick  tick={t} key={t.routeId} />
         ))}
-      </ul>
-    </div>
+      </TickList>
+    </Container>
   );
 };
 
-
-
-const StyledContainer = styled(Container)`
-color:purple;
-font-size: 300px;
-
-`
-export default StyledContainer
+const StyledMPTicks = styled(MPTicks)`
+  color: purple;
+  font-size: 300px;
+`;
+export default MPTicks;

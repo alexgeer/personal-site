@@ -32,7 +32,8 @@ function About() {
           ubiquity of networked devices, the development tools at our disposal have been undergoing a rapid and 
           exciting evolution over the last decade. A streamlined, power hungry Javascript with its front/back-end frameworks, 
           cloud services offering teams incredible agility, and a collaborative and mutually supportive culture all make 
-          it an attractive area of focus. The entire industry is at its core truly a collective effort, and I look forward to 
+          it an attractive area of focus. What strikes me most is how these tools enable someone to be quite productive within a
+          certain scope very early in their career. The entire industry is at its core truly a collective effort, and I look forward to 
           lending myself to it in whatever ways I can.</p>
       </div>
     </PageWrapper>

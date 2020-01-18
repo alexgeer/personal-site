@@ -2,30 +2,32 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 let Container = styled.div`
-  padding: 10px;
+  padding: 20px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+  margin-bottom: 30px;
   @media only screen and (min-width: 600px) {
-    width: 500px;
-  }
-  .input {
-    width: 50px;
-    padding: 10px;
+    width: 75%;
+    min-width: 550px;
   }
 
+
   p {
+    margin: 0;
   }
 `;
 
 let TextBoxWrapper = styled.div`
   padding: 10px;
-
+  margin:auto;
   input {
     border: 1px solid rgba(100,100,100,0.8);
-    border-radius: 20px;
+    border-radius: 8px;
+    padding: 10px 20px;
   }
 `;
+
 let TextBox = ({ handleChange, value, id }) => {
   return (
     <TextBoxWrapper>
@@ -37,7 +39,15 @@ let TextBox = ({ handleChange, value, id }) => {
 let Badge = styled.div`
   display: block;
   font-size: 45px;
+  margin: auto;
 `;
+
+const ControlWrapper = styled.div`
+display: flex;
+flex-direction: column;
+flex-wrap:wrap;
+justify-content: center;
+`
 
 //calc levenstein distance
 let ld = (source, target) => {
@@ -86,22 +96,22 @@ let ld = (source, target) => {
 };
 
 let Lev = () => {
-  let [source, setSource] = useState("");
-  let [target, setTarget] = useState("");
+  let [source, setSource] = useState("lorem");
+  let [target, setTarget] = useState("ipsum");
 
-  let [levDistance, setLevDistance] = useState(0);
+  let [levDistance, setLevDistance] = useState(ld('lorem','ipsum'));
 
-  let handleChange1 = event => {
+  let handleChange1 = (event) => {
     setSource(event.target.value);
     setLevDistance(ld(event.target.value, target));
   };
-  let handleChange2 = event => {
+  let handleChange2 = (event) => {
     setTarget(event.target.value);
     setLevDistance(ld(source, event.target.value));
   };
 
   return (
-    <Container>
+    <Container className='shadow-2'>
       <h3>Levenshtein distance</h3>
       <p>
         This is the 'edit' distance between two words. Precisely, this means the
@@ -109,11 +119,13 @@ let Lev = () => {
         source string to match the target. e.g. The distance between 'lore' and
         'bored' is 2; by substituting 'b' for 'l' and inserting 'd' at the end'
       </p>
-      <div>
+      <ControlWrapper>
         <TextBox id="word1" handleChange={handleChange1} value={source} />
-        <TextBox id="word2" handleChange={handleChange2} value={target} />
         <Badge>{levDistance}</Badge>
-      </div>
+
+        <TextBox id="word2" handleChange={handleChange2} value={target} />
+      </ControlWrapper>
+
     </Container>
   );
 };

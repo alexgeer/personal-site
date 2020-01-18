@@ -27,7 +27,7 @@ export default createGlobalStyle`
   body {
     -webkit-font-smoothing: antialiased;
     color:	rgb(255, 255, 153);
-    background: ${props => props.theme.background};
+    background: ${(props) => props.theme.background};
   }
 
   header {
@@ -42,7 +42,7 @@ export default createGlobalStyle`
 
   }
   a {
-    color:${props => props.theme.color1};
+    color:${(props) => props.theme.color1};
     text-decoration: none;
   }
   ul {
@@ -50,5 +50,15 @@ export default createGlobalStyle`
   }
   button {
     cursor: pointer;
+  }
+.shadow-2{
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+}
+  .shadow-3{
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px, rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;
+  }
+
+  .shadow-4 {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px -1px, rgba(0, 0, 0, 0.14) 0px 4px 5px 0px, rgba(0, 0, 0, 0.12) 0px 1px 10px 0px;
   }
 `;

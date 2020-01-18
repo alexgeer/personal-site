@@ -7,7 +7,7 @@ import PageWrapper from './layouts/PageWrapper'
 function Examples() {
   return (
     <PageWrapper>
-      <h2>Examples</h2>
+      <h2 className='page-header'>Examples</h2>
       <Lev/>
       <MPTicks/>
     </PageWrapper>

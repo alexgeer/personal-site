@@ -11,12 +11,14 @@ padding: 80px 15px 15px 15px;
     margin-left: 163px;
   }
 
- color:${props => props.theme.color1};
+ color:${(props) => props.theme.color1};
 
   h2{
       font-size: 70px;
   }
-
+  .page-header {
+    margin-bottom: 10px;
+  }
   h3 {
       font-size: 40px;
   }
@@ -27,11 +29,11 @@ padding: 80px 15px 15px 15px;
 
   h5 {
     font-size: 20px;
-    color: ${props => props.theme.color2};
+    color: ${(props) => props.theme.color2};
   }
 p{
     margin: 25px;
-    color:${props => props.theme.color2};
+    color:${(props) => props.theme.color2};
     text-indent: 20px;
 }
 `;

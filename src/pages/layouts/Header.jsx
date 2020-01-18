@@ -14,7 +14,7 @@ let Nav = styled.nav`
   display: flex;
 
   a {
-    color: ${props => props.theme.color1};
+    color: ${(props) => (props).theme.color1};
   }
 
   @media only screen and (min-width: 600px) {
@@ -27,7 +27,7 @@ let Nav = styled.nav`
     width: 100%;
     height: 50px;
     padding: 0 10px;
-    background-color: ${props => props.theme.navBackground};
+    background-color: ${(props) => props.theme.navBackground};
 
     display: flex;
     flex-direction: row;
@@ -78,29 +78,43 @@ let ListItem = styled.li`
 
 let BrandContainer = styled.div`
   z-index: 1;
+  height: 50px;
+  width: 15%;
 
   animation: dropin 1s cubic-bezier(0.11, 0.82, 0.55, 0.97);
-  text-decoration: overline;
-  width: 20%;
-  background-color: ${props => props.theme.navBackground};
+  background-color: ${(props) => props.theme.navBackground};
   padding:5px 8px 0 8px;
   text-align:center;
+
+  a {
+    border-top: 5px solid ${props => props.theme.color1};
+    display: flex;
+    justify-content: center;
+  }
   h2 {
   font-size:30px;
+    margin-bottom: 20px;
   color: ${({theme}) => theme.color1}
   }
 
 
 
   @media only screen and (min-width: 600px) {
-    padding: 0;
-    background-color: rgba(0,0,0,0.0);
+    width: 20%;
 
+    background-color: rgba(0,0,0,0.0);
+    border-right: solid 10px ${props => props.theme.color1};
+    height: 240px;
+    width: 163px;
+    padding: 0 30px 15px 15px;
+
+    a {
+      flex-direction: column;
+      border: none;
+    }
     h2 {
       height: 100px;
     font-size: 100px;
-    writing-mode: vertical-lr;
-    text-orientation: upright;
   }
   }
 
@@ -189,7 +203,8 @@ function Header({ routes, timing }) {
       <Container className={cn}>
         <BrandContainer>
           <Link to={"/"}>
-            <h2>AG</h2>
+            <h2>A</h2>
+            <h2>G</h2>
           </Link>
         </BrandContainer>
         <Nav>
