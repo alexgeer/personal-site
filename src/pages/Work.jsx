@@ -78,7 +78,7 @@ function Work() {
           </a>
         </ResumeDL>
         <div className="container-content">
-          <h3>Innovias</h3>
+          <h3>Innovias</h3><a href="https://www.innovias.com/"><em>www.innovias.com</em></a>
           <h4> Web Developer Intern</h4>
           <h4> July 2018 - March 2019</h4>
           <p className="container-text">

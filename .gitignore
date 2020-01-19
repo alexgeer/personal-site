@@ -8,8 +8,7 @@ amplify/mock-data
 amplify/backend/amplify-meta.json
 amplify/backend/awscloudformation
 build/
-dist/*.js
-dist/*/*.js
+dist/
 node_modules/
 awsconfiguration.json
 amplifyconfiguration.json

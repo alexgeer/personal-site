@@ -20,10 +20,9 @@ if(process.env.NODE_ENV === 'development')
 }
 
 
-app.use(express.static( path.join(__dirname, '../assets')));
 app.use(express.static( path.join(__dirname, '../dist')));
 
-logger.log(`serving static files from /assets /dist`)
+logger.log(`serving static files from /dist`)
 
 // Allows you to set port in the project properties.
 app.set('port', port);

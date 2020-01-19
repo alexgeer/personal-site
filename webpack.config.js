@@ -15,7 +15,30 @@ module.exports = function(env, argv) {
           use: {
             loader: "babel-loader"
           }
-        }
+        },
+        {
+          test: /\.(png|jpe?g|gif)$/i,
+          loader: 'file-loader',
+          options: {
+            outputPath: 'images',
+            name: '[name].[ext]',
+          }
+        },
+        {
+          test: /\.pdf$/i,
+          loader: 'file-loader',
+          options: {
+            outputPath: 'pdf',
+            name: '[name].[ext]',
+          }
+        },
+          {
+            test: /\.html$/i,
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+            }
+          }
       ]
     },
     resolve: {
