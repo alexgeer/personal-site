@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import Container from "../pages/layouts/Container";
 
-let Container = styled.div`
-  padding: 20px;
-  display: flex;
+let StyledContainer = styled(Container)`
   flex-wrap: wrap;
-  flex-direction: column;
   margin-bottom: 30px;
+
   @media only screen and (min-width: 600px) {
-    width: 75%;
+    width: 100%;
     min-width: 550px;
   }
-
 
   p {
     margin: 0;
@@ -20,11 +18,24 @@ let Container = styled.div`
 
 let TextBoxWrapper = styled.div`
   padding: 10px;
-  margin:auto;
+  margin: auto;
+  width: 200px;
+  height: 56px;
+
   input {
-    border: 1px solid rgba(100,100,100,0.8);
-    border-radius: 8px;
-    padding: 10px 20px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    padding: 12px 16px 14px;
+    font-size: 18px;
+    width: 200px;
+  }
+  input:hover {
+    border: 1px solid ${props => props.theme.color1};
+  }
+  input:focus {
+    border: 2px solid ${props => props.theme.color3};
+    height: 52px;
+    padding: 12px 15px 15px;
   }
 `;
 
@@ -43,11 +54,11 @@ let Badge = styled.div`
 `;
 
 const ControlWrapper = styled.div`
-display: flex;
-flex-direction: column;
-flex-wrap:wrap;
-justify-content: center;
-`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
 
 //calc levenstein distance
 let ld = (source, target) => {
@@ -99,34 +110,39 @@ let Lev = () => {
   let [source, setSource] = useState("lorem");
   let [target, setTarget] = useState("ipsum");
 
-  let [levDistance, setLevDistance] = useState(ld('lorem','ipsum'));
+  let [levDistance, setLevDistance] = useState(ld("lorem", "ipsum"));
 
-  let handleChange1 = (event) => {
+  let handleChange1 = event => {
     setSource(event.target.value);
     setLevDistance(ld(event.target.value, target));
   };
-  let handleChange2 = (event) => {
+  let handleChange2 = event => {
     setTarget(event.target.value);
     setLevDistance(ld(source, event.target.value));
   };
 
   return (
-    <Container className='shadow-2'>
-      <h3>Levenshtein distance</h3>
+    <StyledContainer className={"material-container"}>
+      <div className='container-header'>
+        <h3 className="material-h3">LEVENSHTEIN DISTANCE CALCULATOR</h3>
+      </div>
+      <div className='container-content'>
+      <div className='container-text'>
       <p>
         This is the 'edit' distance between two words. Precisely, this means the
         number of insertions, substitutions, or deletions required for the
         source string to match the target. e.g. The distance between 'lore' and
         'bored' is 2; by substituting 'b' for 'l' and inserting 'd' at the end'
       </p>
+      </div>
       <ControlWrapper>
         <TextBox id="word1" handleChange={handleChange1} value={source} />
         <Badge>{levDistance}</Badge>
 
         <TextBox id="word2" handleChange={handleChange2} value={target} />
       </ControlWrapper>
-
-    </Container>
+      </div>
+    </StyledContainer>
   );
 };
 

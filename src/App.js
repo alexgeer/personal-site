@@ -46,6 +46,8 @@ const App = withRouter(props => {
         break;
     }
   });
+
+
   return (
     <ThemeProvider theme={themes[theme]}>
       <ScrollToTop />

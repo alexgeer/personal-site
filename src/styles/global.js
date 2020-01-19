@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Oswald|Roboto&display=swap');
   
   * {
     margin: 0;
@@ -27,22 +27,26 @@ export default createGlobalStyle`
   body {
     -webkit-font-smoothing: antialiased;
     color:	rgb(255, 255, 153);
-    background: ${(props) => props.theme.background};
+    background: ${props => props.theme.background};
   }
 
   header {
     height: 0;
   }
   body, input, button {
-    font-family: 'Open Sans', sans-serif;
+    font-family:   ${props => props.theme.font1};
   }
-
+;
   h1, h2, h3, h4, h5 {
-    font: 14px 'Oswald', sans-serif;
-
+    font: 14px   ${props => props.theme.font2};
   }
+
+  h2 {
+    font-weight: ${props => props.theme.h2weight}
+  }
+  
   a {
-    color:${(props) => props.theme.color1};
+    color:${props => props.theme.color1};
     text-decoration: none;
   }
   ul {
@@ -51,14 +55,31 @@ export default createGlobalStyle`
   button {
     cursor: pointer;
   }
-.shadow-2{
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
-}
-  .shadow-3{
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px, rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;
+
+  .material-container {
+    border: 1px solid rgba(0,0,0,0.3);
+    transition: 0.3s ease-in;
+    a {
+      color: ${props => props.theme.color3}
+    }
+
+    a:hover {
+      text-decoration: underline;
+      font-weight: 600;
+    }
+  }
+  .material-container:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   }
 
-  .shadow-4 {
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px -1px, rgba(0, 0, 0, 0.14) 0px 4px 5px 0px, rgba(0, 0, 0, 0.12) 0px 1px 10px 0px;
+  .material-h3 {
+    font-size: .875rem !important;
+    line-height: 2.25rem;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 500 !important;
+    letter-spacing: .0892857143em;
+    text-decoration: none;
+    text-transform: uppercase;
+    
   }
 `;

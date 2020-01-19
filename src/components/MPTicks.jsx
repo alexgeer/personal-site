@@ -3,19 +3,17 @@ import styled from "styled-components";
 import getAPI from "./DynamicAPI";
 import Spinner from "./LoadingSpinner";
 
+import Container from "../pages/layouts/Container";
+
 const TickItem = styled.li``;
 
-let Container = styled.div`
-  padding: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
+let StyledContainer = styled(Container)`
   margin-bottom: 30px;
+  width: 100%;
+
   @media only screen and (min-width: 600px) {
-    width: 75%;
     min-width: 550px;
   }
-
 
   p {
     margin: 0;
@@ -27,8 +25,6 @@ const TickList = styled.ul`
   flex-direction: row;
   justify-content: space-evenly;
   flex-wrap: wrap;
-
-
 `;
 
 const Thumbnail = props => (
@@ -38,19 +34,18 @@ const Thumbnail = props => (
 );
 
 const StyledThumbnail = styled(Thumbnail)`
-  width: 200px;
-  height: 200px;
-  padding:10px;
+  width: 100px;
+  height: 100px;
+  padding: 10px;
   margin: 0 5px;
 
-  
   border-radius: 5px;
 
   img {
     border-radius: 5px;
     width: 100%;
     height: 100%;
-    display: block
+    display: block;
   }
 `;
 
@@ -75,13 +70,13 @@ const Tick = ({ tick, selected }) => {
             <p>My notes: {tick.notes} </p>
           </li>
           <li>
-            <img src={tick.route.imgSmall} />{" "}
+            <img src={tick.route.imgSqSmall} />{" "}
           </li>
         </ul>
       </TickItem>
     );
 
-  return <StyledThumbnail className={'thumbnail'} src={tick.route.imgSmall} />;
+  return <StyledThumbnail className={"thumbnail"} src={tick.route.imgSqSmall} />;
 };
 
 const MPTicks = () => {
@@ -125,23 +120,28 @@ const MPTicks = () => {
   }, []);
 
   return (
-    <Container className="shadow-2">
-      <h3>Mountain Project API - My Climbs</h3>
-      <p>
-        My four most recent climbs that I bothered to tick on Mountain Project,
-        pulled from the{" "}
-        <a href="https://www.mountainproject.com/data">MP data API</a>
-      </p>
-      <p>This API call is made on the backend from an AWS lambda function</p>
+    <StyledContainer className="material-container">
+      <div className="container-header">
+        <h3 className="material-h3">MOUNTAIN PROJECT DATA API</h3>
+      </div>
+      <div className="container-content">
+        <div className='container-text'>
+        <p>
+          My four most recent climbs that I bothered to tick on Mountain
+          Project, pulled from the{" "}
+          <a href="https://www.mountainproject.com/data">MP data API</a>
+        </p>
+        <p>This API call is made on the backend from an AWS lambda function</p>
+        </div>
+        {/* {loading && <Spinner cnProp = {'spinner'}/>} */}
 
-      {/* {loading && <Spinner cnProp = {'spinner'}/>} */}
-
-      <TickList>
-        {ticks.map(t => (
-          <Tick  tick={t} key={t.routeId} />
-        ))}
-      </TickList>
-    </Container>
+        <TickList>
+          {ticks.map(t => (
+            <Tick tick={t} key={t.routeId} />
+          ))}
+        </TickList>
+      </div>
+    </StyledContainer>
   );
 };
 

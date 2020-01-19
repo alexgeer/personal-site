@@ -1,17 +1,19 @@
 import React from "react";
 import PageWrapper from "./layouts/PageWrapper";
+import Container from "./layouts/Container";
 
 function About() {
   return (
     <PageWrapper>
-      <h2>About</h2>
-      <div>
-        <p>
+      <Container>
+      <h2 className='page-header'>About</h2>
+      <div className='container-content'>
+        <p className='container-text'>
           My name is Alex Geer. I have a CS degree from University of North Florida. I graduated in
           Fall of 2018, magna cum laude with a 3.7 GPA. In no particular order, these are some of my favorite
           courses, which were (un)coincidentally taught by some of my favorite educators:
         </p>
-        <ul style={{textAlign:'center'}}>
+        <ul className='container-text'>
             <li>Data Structures and Algorithms </li>
             <li>Compiler Construction</li>
             <li>Networks and Distributed Systems</li>
@@ -20,7 +22,7 @@ function About() {
             <li>Computability and Automata </li>
             <li>Computational Biology</li>
           </ul>
-        <p>
+        <p className='container-text'>
           I began pursuing programming after hearing anecdotally (and probably apocryphally) that the
           industry was seeking people with musical backgrounds. I've played classical guitar for 15 years
           and I think musical thinking has given me a great advantage in dealing with the abstract thought
@@ -36,6 +38,7 @@ function About() {
           certain scope very early in their career. The entire industry is at its core truly a collective effort, and I look forward to 
           lending myself to it in whatever ways I can.</p>
       </div>
+      </Container>
     </PageWrapper>
   );
 }
