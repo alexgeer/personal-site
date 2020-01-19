@@ -21,6 +21,7 @@ window.secretMessage = "please hire mme";
 const App = withRouter(props => {
   let [loading, setLoading] = useState(true);
   let [theme, setTheme] = useState("main");
+  let [themeUserSelected, setThemeUserSelected] = useState(false);
 
   // useEffect(() => {
   //   let timer = setTimeout(() => setLoading(false), 5000);
@@ -30,23 +31,23 @@ const App = withRouter(props => {
   // }, []);
 
   useEffect(() => {
-    console.log(props.location.pathname);
-    switch (props.location.pathname) {
-      case "/":
-        setTheme("main");
-        break;
-      case "/about":
-        setTheme("main");
-        break;
-      case "/examples":
-        setTheme("bw");
-        break;
-      case "/work":
-        setTheme("blue");
-        break;
+    if (!themeUserSelected) {
+      switch (props.location.pathname) {
+        case "/":
+          setTheme("main");
+          break;
+        case "/about":
+          setTheme("main");
+          break;
+        case "/examples":
+          setTheme("bw");
+          break;
+        case "/work":
+          setTheme("blue");
+          break;
+      }
     }
   });
-
 
   return (
     <ThemeProvider theme={themes[theme]}>
@@ -59,7 +60,7 @@ const App = withRouter(props => {
               key={index}
               path={route.path}
               exact={route.exact}
-              children={<route.main loading={loading} />}
+              children={<route.main loading={loading} setTheme={setTheme} setThemeUserSelected={setThemeUserSelected} />}
             />
           ))}
         </Switch>

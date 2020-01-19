@@ -89,7 +89,6 @@ let ld = (source, target) => {
   for (j = 1; j < cols; j++) {
     for (i = 1; i < rows; i++) {
       let cost = 1;
-      console.log(source[i - 1], target[j - 1]);
       if (source[i - 1] === target[j - 1]) cost = 0;
 
       matrix[i][j] = Math.min(
@@ -101,8 +100,6 @@ let ld = (source, target) => {
   }
 
   //return the last element as solution
-  console.log(matrix);
-  console.log(matrix[rows - 1][cols - 1]);
   return matrix[rows - 1][cols - 1];
 };
 

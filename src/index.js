@@ -11,4 +11,4 @@ import img7 from '../assets/images/react.png'
 
 import pdf1 from '../assets/pdf/AlexGeerResume.pdf'
 
-// import index1 from '../assets/index.html'
+import index1 from '../assets/index.html'

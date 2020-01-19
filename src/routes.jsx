@@ -21,12 +21,12 @@ const routes =
     {
         path:'/examples',
         label: '/eg',
-        main: () => <Examples/>
+        main: ({setTheme, setThemeUserSelected}) => <Examples setTheme={setTheme} setThemeUserSelected={setThemeUserSelected}/>
     },
     {
         path:'/work',
         label: '/work',
-        main: () => <Work/>
+        main: () => <Work />
     },
     // {
     //     path:'/*',
