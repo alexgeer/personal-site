@@ -13,7 +13,7 @@ function About() {
           Fall of 2018, magna cum laude with a 3.7 GPA. In no particular order, these are some of my favorite
           courses, which were (un)coincidentally taught by some of my favorite educators:
         </p>
-        <ul className='container-text'>
+        <ul className='container-text container-list'>
             <li>Data Structures and Algorithms </li>
             <li>Compiler Construction</li>
             <li>Networks and Distributed Systems</li>

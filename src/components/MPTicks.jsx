@@ -56,9 +56,6 @@ const Tick = ({ className, tick, open }) => {
           <h4>{tick.route.name}</h4>
           <h5>{tick.route.type + ' -- ' + tick.route.rating}</h5>
           </div>
-      </div>
-      <div className='card-body'>
-
       </div>  
     </div>
   );
@@ -66,9 +63,7 @@ const Tick = ({ className, tick, open }) => {
 
 const StyledTick = styled(Tick)`
 
-
     
-
   .card-header-text{
     padding: 20px;
     h5 {
@@ -78,21 +73,20 @@ const StyledTick = styled(Tick)`
   }
 
   .card-header-img {
-    width: 275px;
-    height: 183.33px;
+    width: 300px;
+    height: 200px;
     overflow: hidden;
   }
 
   overflow: hidden;
   margin-bottom: 20px;
-  &.open {
-    height: 400px;
-  }
+
+
   .tick-header {
     height: 120px;
     padding: 10px;
     display: flex;
-    
+
     flex-direction: row;
   }
 

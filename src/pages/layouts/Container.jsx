@@ -22,6 +22,14 @@ flex-direction: column;
 .container-text {
     margin-bottom: 14px;
 }
+
+.container-list {
+    li{
+        margin: 8px;
+        color: ${({theme}) => theme.color3};
+        font-size: 20px;
+    }
+}
 `
 
 export default Container
