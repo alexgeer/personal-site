@@ -5,8 +5,6 @@ import Spinner from "./LoadingSpinner";
 
 import Container from "../pages/layouts/Container";
 
-const TickItem = styled.li``;
-
 let StyledContainer = styled(Container)`
   margin-bottom: 30px;
   width: 100%;
@@ -22,9 +20,9 @@ let StyledContainer = styled(Container)`
 
 const TickList = styled.ul`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-evenly;
-  flex-wrap: wrap;
+  align-items: center;
 `;
 
 const Thumbnail = props => (
@@ -49,35 +47,62 @@ const StyledThumbnail = styled(Thumbnail)`
   }
 `;
 
-const Tick = ({ tick, selected }) => {
-  if (selected)
-    return (
-      <TickItem>
-        <ul>
-          <li>
-            <h4>
-              {" "}
-              {tick.route.name} -- {tick.route.type} -- {tick.route.rating}
-            </h4>
-          </li>
-          <li>
-            <h5>{tick.route.location.join(" | ")}</h5>
-          </li>
-          <li>
-            <p>Date: {tick.date} </p>
-          </li>
-          <li>
-            <p>My notes: {tick.notes} </p>
-          </li>
-          <li>
-            <img src={tick.route.imgSqSmall} />{" "}
-          </li>
-        </ul>
-      </TickItem>
-    );
+const Tick = ({ className, tick, open }) => {
+  return (
+    <div className={className + ' material-container'}>
+      <div className="card-header">
+        <div className='card-header-img'><img src={tick.route.imgMedium}></img></div>
+        <div className='card-header-text'>
+          <h4>{tick.route.name}</h4>
+          <h5>{tick.route.type + ' -- ' + tick.route.rating}</h5>
+          </div>
+      </div>
+      <div className='card-body'>
 
-  return <StyledThumbnail className={"thumbnail"} src={tick.route.imgSqSmall} />;
+      </div>  
+    </div>
+  );
 };
+
+const StyledTick = styled(Tick)`
+
+
+    
+
+  .card-header-text{
+    padding: 20px;
+    h5 {
+      font-size: 15px;
+    }
+
+  }
+
+  .card-header-img {
+    width: 275px;
+    height: 183.33px;
+    overflow: hidden;
+  }
+
+  overflow: hidden;
+  margin-bottom: 20px;
+  &.open {
+    height: 400px;
+  }
+  .tick-header {
+    height: 120px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  @media screen and (min-width: 600px )
+  {
+    .card-header-img{
+    width: 450px;
+    height: 300px;
+    }
+  }
+`;
 
 const MPTicks = () => {
   let [ticks, setTicks] = useState([]);
@@ -125,19 +150,26 @@ const MPTicks = () => {
         <h3 className="material-h3">MOUNTAIN PROJECT DATA API</h3>
       </div>
       <div className="container-content">
-        <div className='container-text'>
-        <p className='container-text'>
-          My four most recent climbs that I bothered to tick on Mountain
-          Project, pulled from the{" "}
-          <a href="https://www.mountainproject.com/data">MP data API</a>
-        </p>
-        <p className='container-text'>This API call is made on the backend from an AWS lambda function</p>
+        <div className="container-text">
+          <p className="container-text">
+            My four most recent climbs that I bothered to tick on Mountain
+            Project, pulled from the{" "}
+            <a
+              className="inline-link"
+              href="https://www.mountainproject.com/data"
+            >
+              MP data API
+            </a>
+          </p>
+          <p className="container-text">
+            This API call is made on the backend from an AWS lambda function
+          </p>
         </div>
         {/* {loading && <Spinner cnProp = {'spinner'}/>} */}
 
         <TickList>
           {ticks.map(t => (
-            <Tick tick={t} key={t.routeId} />
+            <StyledTick tick={t} open={true} key={t.routeId} />
           ))}
         </TickList>
       </div>
@@ -145,8 +177,5 @@ const MPTicks = () => {
   );
 };
 
-const StyledMPTicks = styled(MPTicks)`
-  color: purple;
-  font-size: 300px;
-`;
+
 export default MPTicks;

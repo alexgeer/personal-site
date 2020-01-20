@@ -49,7 +49,7 @@ const StyledThemeButton = styled(ThemeButton)`
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    
     .button-wrapper {
         padding: 8px;
         border-radius: 100%;
@@ -64,9 +64,12 @@ const StyledThemeButton = styled(ThemeButton)`
 
     .button-wrapper.selected {
         border: solid 3px ${props => props.theme.color3};
-        padding: 4px;
+        padding: 5px;
     }
-
+    label {
+      width: 100px;
+      text-align: center;
+    }
     button {
     background-color: ${props => props.bg};
     border: solid 8px ${props => props.border};
@@ -86,10 +89,8 @@ const StyledThemePicker = styled(ThemePicker)`
   .themes-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
     padding: 8px;
-
+    justify-content: space-around;
   }
 `;
 

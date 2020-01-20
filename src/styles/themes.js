@@ -14,7 +14,7 @@ themes.main = {
 }
 
 themes.bw = {
-    name:'docs',
+    name:'bootsrappish',
     background: 'white',
     navBackground: 'rgba(255,255,255,0.6)', //translucent #a0a0a0
     color1: '#212121', //
@@ -26,7 +26,7 @@ themes.bw = {
 }
 
 themes.blue = {
-    name:'corp',
+    name:'corp-dark',
     background: '#19214d',
     navBackground: '#19214d', //dark blue
     color1: 'rgb(222, 239, 245)', //ligth blue

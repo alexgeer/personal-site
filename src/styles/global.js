@@ -59,14 +59,9 @@ export default createGlobalStyle`
   .material-container {
     border: 1px solid rgba(0,0,0,0.3);
     transition: 0.3s ease-in;
-    a {
-      color: ${props => props.theme.color3}
-    }
+    
 
-    a:hover {
-      text-decoration: underline;
-      font-weight: 600;
-    }
+
   }
   .material-container:hover {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
@@ -82,4 +77,13 @@ export default createGlobalStyle`
     text-transform: uppercase;
     
   }
+
+  a.inline-link {
+      color: ${props => props.theme.color3}
+    }
+
+  a.inline-link:hover {
+      text-decoration: underline;
+      font-weight: 600;
+    }
 `;

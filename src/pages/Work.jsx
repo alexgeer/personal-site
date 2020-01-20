@@ -60,6 +60,11 @@ let ResumeDL = styled.div`
     border-radius: 8px;
     padding: 12px;
   }
+
+  a:hover {
+    background:  ${({ theme }) => theme.color3};
+  }
+
   i {
     margin-left: 8px;
   }
@@ -78,7 +83,7 @@ function Work() {
           </a>
         </ResumeDL>
         <div className="container-content">
-          <h3>Innovias</h3><a href="https://www.innovias.com/"><em>www.innovias.com</em></a>
+          <h3>Innovias</h3><a className='inline-link' href="https://www.innovias.com/"><em>www.innovias.com</em></a>
           <h4> Web Developer Intern</h4>
           <h4> July 2018 - March 2019</h4>
           <p className="container-text">
@@ -94,12 +99,12 @@ function Work() {
             My boss, the owner, was an oldschool Java guy who had become
             captivated with React and Node. While his architecture did tend to
             get a little overly 'hereditary', his skill and experience at
-            buliding and maintaining a library of useful, reusable code was
+            building and maintaining a library of useful, reusable code was
             undeniable.
           </p>
           <h4 style={{ margin: "0 auto" }}>
             <a href="https://app.the-breakthrough-coach.com/calendar">
-              The Breakthrough Coach
+              The Breakthrough Coach - Event Calendar and Registration
             </a>
           </h4>
           <Stack />
@@ -111,7 +116,12 @@ function Work() {
           <p className="container-text">
             There was an existing app, but I was tasked with refactoring it into
             ES6 and ended up rewriting 80-90% of the original code, including a
-            new DB schema.
+            new DB schema. 
+          </p>
+          <p className="container-text">
+            The components of the business problem were a calendar to display events to customers, 
+            an admin UI to post, edit, and remove events, and a registration process that automatically integrated contact 
+            and registration/payment data into their CRM and accounting software. 
           </p>
           <p className="container-text">
             The front end was made with React. I wrote all the reusable form
