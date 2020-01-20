@@ -25,7 +25,7 @@ const ThemePicker = ({ className, setTheme, setThemeUserSelected, currentTheme})
                 border={val.color1} 
                 key={key} 
                 themeKey={key} 
-                name={val.name} 
+                nameProp={val.name} 
                 selected={currentTheme === key}
                 handleClick={handleClick}/>)
           }
@@ -35,27 +35,34 @@ const ThemePicker = ({ className, setTheme, setThemeUserSelected, currentTheme})
   );
 };
 
-const ThemeButton = ({className, themeKey, handleClick, selected}) =>
-    <div className={`${className} ${selected && 'selected'}`}>
-        <button className={"button-"+themeKey} onClick={e => handleClick(themeKey)}></button>
-        <label htmlFor={"button-"+themeKey}>{name}</label>
+const ThemeButton = ({className, themeKey, handleClick, selected, nameProp}) =>
+<div className={className}>
+    <div className={`button-wrapper ${selected && 'selected'}`}>
+        <button id={"button-"+themeKey} onClick={e => handleClick(themeKey)}></button>
     </div>
-
+    <label htmlFor={"button-"+themeKey}>
+        {nameProp}
+    </label>
+</div>
 
 const StyledThemeButton = styled(ThemeButton)`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 8px;
-    border-radius: 100%;
+
+    .button-wrapper {
+        padding: 8px;
+        border-radius: 100%;
+    }
     
  
 
-    &:hover {
+    .button-wrapper:hover {
         background: ${props => props.theme.color3};
+
     }
 
-    &.selected {
+    .button-wrapper.selected {
         border: solid 3px ${props => props.theme.color3};
         padding: 4px;
     }

@@ -14,7 +14,7 @@ themes.main = {
 }
 
 themes.bw = {
-    name:'material',
+    name:'bw',
     background: 'white',
     navBackground: 'rgba(255,255,255,0.6)', //translucent #a0a0a0
     color1: '#212121', //
