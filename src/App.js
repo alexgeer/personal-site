@@ -55,7 +55,7 @@ const App = withRouter(props => {
       <Header routes={routes} />
       <Main className="main">
         <Switch>
-          {routes.map((route, index) => (
+          {routes.map( (route, index) => (
             <Route
               key={index}
               path={route.path}

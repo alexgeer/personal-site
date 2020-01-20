@@ -1,6 +1,12 @@
 
 import React from 'react'
-import {Home, About, Examples, Work} from './pages'
+import Home from './pages/Home'
+import DynamicImport from './components/DynamicImport'
+
+const About = React.lazy( () => import(/* webpackChunkName: "about" */'./pages/About'))
+const Examples = React.lazy( () => import(/* webpackChunkName: "examples" */'./pages/Examples'))
+const Work = React.lazy( () => import(/* webpackChunkName: "work" */'./pages/Work'))
+
 
 
 const routes = 
@@ -16,18 +22,18 @@ const routes =
         path:'/about',
         sidebar: () => <div>About</div>,
         label: '/about',
-        main: () => <About/>
+        main: () => <React.Suspense fallback={<div></div>}><About/></React.Suspense>
     },
     {
         path:'/examples',
         label: '/eg',
         main: ({setTheme, setThemeUserSelected, currentTheme}) => 
-        <Examples currentTheme={currentTheme} setTheme={setTheme} setThemeUserSelected={setThemeUserSelected}/>
+        <React.Suspense fallback={<div></div>}><Examples currentTheme={currentTheme} setTheme={setTheme} setThemeUserSelected={setThemeUserSelected}/></React.Suspense>
     },
     {
         path:'/work',
         label: '/work',
-        main: () => <Work />
+        main: () => <React.Suspense fallback={<div></div>}><Work /></React.Suspense>
     },
     // {
     //     path:'/*',
