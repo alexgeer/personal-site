@@ -34,8 +34,8 @@ let TextBoxWrapper = styled.div`
   }
   input:focus {
     border: 2px solid ${props => props.theme.color3};
-    height: 52px;
-    padding: 12px 15px 15px;
+    height: 50px;
+    padding: 11px 15px 13px;
   }
 `;
 

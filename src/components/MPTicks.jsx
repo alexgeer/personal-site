@@ -126,12 +126,12 @@ const MPTicks = () => {
       </div>
       <div className="container-content">
         <div className='container-text'>
-        <p>
+        <p className='container-text'>
           My four most recent climbs that I bothered to tick on Mountain
           Project, pulled from the{" "}
           <a href="https://www.mountainproject.com/data">MP data API</a>
         </p>
-        <p>This API call is made on the backend from an AWS lambda function</p>
+        <p className='container-text'>This API call is made on the backend from an AWS lambda function</p>
         </div>
         {/* {loading && <Spinner cnProp = {'spinner'}/>} */}
 

@@ -14,7 +14,7 @@ themes.main = {
 }
 
 themes.bw = {
-    name:'bw',
+    name:'docs',
     background: 'white',
     navBackground: 'rgba(255,255,255,0.6)', //translucent #a0a0a0
     color1: '#212121', //

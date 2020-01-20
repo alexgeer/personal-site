@@ -44,7 +44,8 @@ width: 100%;
 p{
     /* margin: 25px; */
     color:${(props) => props.theme.color2};
-    text-indent: 20px;
+    text-indent: 0px;
+    line-height: 1.4;
 }
 
 /* desktop  */
