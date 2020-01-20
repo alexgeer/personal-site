@@ -10,11 +10,16 @@ width: 100%;
  color:${(props) => props.theme.color1};
 
   h2{
+    font-size: 60px;
+
+      @media screen and (min-width:600px) {
       font-size: 70px;
+  }
   }
 
   .page-header {
-    margin: 40px 25px;
+    text-align: center;
+    margin: 30px 0;
     line-height:1;
   }
 
