@@ -92,6 +92,7 @@ const StyledTick = styled(Tick)`
     height: 120px;
     padding: 10px;
     display: flex;
+    
     flex-direction: row;
   }
 
