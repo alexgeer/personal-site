@@ -21,7 +21,8 @@ const routes =
     {
         path:'/examples',
         label: '/eg',
-        main: ({setTheme, setThemeUserSelected}) => <Examples setTheme={setTheme} setThemeUserSelected={setThemeUserSelected}/>
+        main: ({setTheme, setThemeUserSelected, currentTheme}) => 
+        <Examples currentTheme={currentTheme} setTheme={setTheme} setThemeUserSelected={setThemeUserSelected}/>
     },
     {
         path:'/work',

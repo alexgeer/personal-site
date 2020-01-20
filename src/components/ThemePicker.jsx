@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import Container from "../pages/layouts/Container";
 import themes from '../styles/themes'
-const ThemePicker = ({ className, setTheme, setThemeUserSelected }) => {
+const ThemePicker = ({ className, setTheme, setThemeUserSelected, currentTheme}) => {
+
 
     let handleClick = (theme) => {
         setThemeUserSelected(true)
@@ -18,7 +19,14 @@ const ThemePicker = ({ className, setTheme, setThemeUserSelected }) => {
         <div className="themes-container">
           {
               Object.entries(themes).map(([key, val]) => 
-                <StyledThemeButton bg={val.background} border={val.color1} key={key} theme={key} handleClick={handleClick}/>)
+                <StyledThemeButton 
+                bg={val.background} 
+                border={val.color1} 
+                key={key} 
+                themeKey={key} 
+                name={val.name} 
+                selected={currentTheme === key}
+                handleClick={handleClick}/>)
           }
         </div>
       </div>
@@ -26,10 +34,10 @@ const ThemePicker = ({ className, setTheme, setThemeUserSelected }) => {
   );
 };
 
-const ThemeButton = ({className, theme, handleClick}) =>
-    <div className={className}>
-        <button className={"button-"+theme} onClick={e => handleClick(theme)}></button>
-        <label htmlFor={"button-"+theme}>{theme}</label>
+const ThemeButton = ({className, themeKey, handleClick, selected}) =>
+    <div className={`${className} ${selected && 'selected'}`}>
+        <button className={"button-"+themeKey} onClick={e => handleClick(themeKey)}></button>
+        <label htmlFor={"button-"+themeKey}>{name}</label>
     </div>
 
 
@@ -37,6 +45,21 @@ const StyledThemeButton = styled(ThemeButton)`
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 8px;
+    border-radius: 100%;
+    
+ 
+
+    &:hover {
+        background: ${props => props.theme.color3};
+        
+    }
+
+    &.selected {
+        border: solid 3px ${props => props.theme.color3};
+        padding: 2px;
+    }
+
     button {
     background-color: ${props => props.bg};
     border: solid 8px ${props => props.border};

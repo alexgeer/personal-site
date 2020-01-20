@@ -60,7 +60,11 @@ const App = withRouter(props => {
               key={index}
               path={route.path}
               exact={route.exact}
-              children={<route.main loading={loading} setTheme={setTheme} setThemeUserSelected={setThemeUserSelected} />}
+              children={<route.main 
+                loading={loading} 
+              currentTheme={theme} 
+              setTheme={setTheme} 
+              setThemeUserSelected={setThemeUserSelected} />}
             />
           ))}
         </Switch>
