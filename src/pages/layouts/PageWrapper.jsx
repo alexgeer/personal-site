@@ -15,13 +15,16 @@ width: 100%;
 
   .page-header {
     margin: 40px 25px;
+    line-height:1;
   }
 
   .subheader {
     color: ${props => props.theme.color3};
     font-size: 35px;
-    margin: 0 auto 20px;
+    margin: 10px auto 20px;
     width: 90%;
+    line-height: 1.2;
+    min-height: 84px;
   }
   h3 {
       font-size: 40px;

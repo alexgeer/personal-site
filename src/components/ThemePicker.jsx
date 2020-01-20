@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import styled from "styled-components";
 import Container from "../pages/layouts/Container";
 import themes from '../styles/themes'
+
 const ThemePicker = ({ className, setTheme, setThemeUserSelected, currentTheme}) => {
 
 
@@ -52,12 +53,11 @@ const StyledThemeButton = styled(ThemeButton)`
 
     &:hover {
         background: ${props => props.theme.color3};
-        
     }
 
     &.selected {
         border: solid 3px ${props => props.theme.color3};
-        padding: 2px;
+        padding: 4px;
     }
 
     button {
