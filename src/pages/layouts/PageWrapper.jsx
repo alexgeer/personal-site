@@ -65,6 +65,10 @@ p{
     margin: 40px auto 10px;
   } 
   }
+
+  @media (orientation: landscape) {
+    
+}
 `;
 
 export default Wrapper;

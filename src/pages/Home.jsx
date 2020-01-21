@@ -104,12 +104,11 @@ let Section2Wrapper = styled.section`
     height: 25%;
 
     font-weight: 600;
-    font-size: 20vw;
-    line-height: 18vw;
+    font-size: 70px;
+    line-height: .9;
     text-align: center;
-    padding-top: 30px;
+    padding-top: 10px;
 
-    margin: 0 auto;
 
     overflow: hidden;
     overflow-wrap: break-word;

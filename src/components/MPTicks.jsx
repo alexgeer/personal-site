@@ -53,7 +53,7 @@ const Tick = ({ className, tick, open }) => {
       <div className="card-header">
         <div className='card-header-img'><img src={tick.route.imgMedium}></img></div>
         <div className='card-header-text'>
-          <h4>{tick.route.name}</h4>
+          <a className="inline-link" href={tick.route.url}><h4>{tick.route.name}</h4></a>
           <h5>{tick.route.type + ' -- ' + tick.route.rating}</h5>
           </div>
       </div>  
@@ -66,6 +66,9 @@ const StyledTick = styled(Tick)`
     
   .card-header-text{
     padding: 20px;
+    h4{
+      font-size: 28px;
+    }
     h5 {
       font-size: 15px;
     }
@@ -92,6 +95,7 @@ const StyledTick = styled(Tick)`
 
   @media screen and (min-width: 600px )
   {
+   
     .card-header-img{
     width: 450px;
     height: 300px;
@@ -147,14 +151,14 @@ const MPTicks = () => {
       <div className="container-content">
         <div className="container-text">
           <p className="container-text">
-            My four most recent climbs that I bothered to tick on Mountain
-            Project, pulled from the{" "}
+            My four most recent climbs that I bothered to post on Mountain
+            Project, pulled from my profile via the {" "}
             <a
               className="inline-link"
               href="https://www.mountainproject.com/data"
             >
               MP data API
-            </a>
+            </a>.
           </p>
           <p className="container-text">
             This API call is made on the backend from an AWS lambda function

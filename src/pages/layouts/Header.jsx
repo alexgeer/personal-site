@@ -80,7 +80,6 @@ let BrandContainer = styled.div`
   z-index: 1;
   height: 50px;
   width: 15%;
-
   animation: dropin 1s cubic-bezier(0.11, 0.82, 0.55, 0.97);
   background-color: ${(props) => props.theme.navBackground};
   padding:5px 8px 0 8px;
@@ -120,8 +119,8 @@ let BrandContainer = styled.div`
 
   @keyframes dropin {
     0% {
-      -webkit-transform: translateY(-296px);
-      transform: translateY(-296px);
+      -webkit-transform: translateY(-300px);
+      transform: translateY(-300px);
     }
     100% {
       -webkit-transform: translateY(0);
@@ -132,8 +131,8 @@ let BrandContainer = styled.div`
   /* Firefox < 16 */
   @-moz-keyframes dropin {
     0% {
-      -webkit-transform: translateY(-296px);
-      transform: translateY(-296px);
+      -webkit-transform: translateY(-300px);
+      transform: translateY(-300px);
       opacity: 0;
     }
     100% {
@@ -146,8 +145,8 @@ let BrandContainer = styled.div`
   /* Safari, Chrome and Opera > 12.1 */
   @-webkit-keyframes dropin {
     0% {
-      -webkit-transform: translateY(-296px);
-      transform: translateY(-296px);
+      -webkit-transform: translateY(-300px);
+      transform: translateY(-300px);
       opacity: 0;
     }
     100% {
@@ -177,7 +176,7 @@ const Container = styled.div`
   min-width:600px;
   }
   &.hidden {
-    top: -50vh;
+    top: -300px;
   }
 `;
 
