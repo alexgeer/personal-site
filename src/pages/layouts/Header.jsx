@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 let Nav = styled.nav`
   width: 100%;
+  height: 50px;  
 
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
@@ -158,6 +159,7 @@ let BrandContainer = styled.div`
 `;
 
 const Container = styled.div`
+  height:0px;
   padding-top: 8px;
   display: flex;
   justify-content: space-between;
