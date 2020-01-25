@@ -21,6 +21,7 @@ let Wrapper = styled.div`
       filter: blur(0px);
       background-image: url("images/hallway-efe-kurnaz.jpg");
 
+
     }
   }
   

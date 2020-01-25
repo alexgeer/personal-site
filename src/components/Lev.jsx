@@ -28,6 +28,7 @@ let TextBoxWrapper = styled.div`
     padding: 12px 16px 14px;
     font-size: 18px;
     width: 200px;
+    background: ${props => props.theme.inputBackground || '#FFFFFF'}
   }
   input:hover {
     border: 1px solid ${props => props.theme.color1};

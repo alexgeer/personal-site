@@ -17,6 +17,12 @@ const ThemePicker = ({ className, setTheme, setThemeUserSelected, currentTheme})
         <h3 className="material-h3">THEME SELECTOR</h3>
       </div>
       <div className="container-content">
+        <div className="container-text">
+          <p>Normally, the app will change theme based on route. Using the theme picker allows you to see what a theme looks
+            like when applied to the whole app. Because of the hero image, 
+            it's currently a bit clunky for the landing page, but my goal was simply to demonstrate the logic of theming and to show different design styles.
+          </p>
+        </div>
         <div className="themes-container">
           {
               Object.entries(themes).map(([key, val]) => 
