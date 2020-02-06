@@ -1,5 +1,6 @@
 node_modules
 credentials.csv
+stockApiKey.txt
 old
 #amplify
 amplify/\#current-cloud-backend

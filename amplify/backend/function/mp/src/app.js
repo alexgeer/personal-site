@@ -11,7 +11,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var awsServerlessExpressMiddleware = require("aws-serverless-express/middleware");
 var mpAPI = require('./mpAPI')
-
+var stockApi = require('./stockAPI')
 // declare a new express app
 var app = express();
 app.use(bodyParser.json());
@@ -44,6 +44,21 @@ app.get("/ticks", function(req, res) {
       }
 });
 
+app.get("/stocks/:symbol", function(req, res){
+    let {symbol} = req.params
+    try{
+      stockAPI( (data) => 
+      {
+        res.set('Content-Type', 'application/json')
+        res.send(data);
+      })
+    }
+    catch (err)
+    {
+      res.json(err)
+    }
+
+})
 
 app.listen(3000, function() {
   console.log("App started");

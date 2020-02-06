@@ -14,12 +14,7 @@ const mpAPI = cb => {
       key
     }
   });
-  // let arg =
-  //   "https://www.mountainproject.com/data/get-ticks" +
-  //   "?email=geer.alex@gmail.com" +
-  //   "&key=" +
-  //   key;
-
+  
   request(arg, (err1, res1, body1) => {
     if (err1) throw err1;
 
