@@ -1,7 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
-import { fadeIn } from "../styles/anim";
 import PageWrapper from './layouts/PageWrapper'
+
+
 
 let Wrapper = styled.div`
   
@@ -11,40 +12,42 @@ let Wrapper = styled.div`
 
 
 const BackDiv = styled.div`
-width: 375px;
-font-size: 20px;
-margin-top: 26px;
+  width: 375px;
+  font-size: 20px;
+  margin-top: 26px;
 
 
-word-break: break-all !important;
-color: ${({theme}) => theme.color1};
-.bg-text {
-  opacity: 0.175;
+  word-break: break-all !important;
+  color: ${({theme}) => theme.color1};
+  .bg-text {
+    opacity: 0.175;
 
-}
-.highlighted {
-  opacity: 1.0;
-  color: ${({theme}) => theme.color3};
-  word-break: break-word !important;
+  }
+  
+  .highlighted {
+    opacity: 1.0;
+    color: ${({theme}) => theme.color3};
+    word-break: break-word !important;
+  }
 
-}
+  .highlighted:first-of-type{
+    font-size: 50px;
+  }
 
-.highlighted:first-of-type{
-  font-size: 50px;
-}
+  @media only screen and (max-width: 400px) {
+    .bg-text:first-of-type { display:none;}
+    width: 100%;
 
-@media only screen and (max-width: 400px) {
-  .bg-text:first-of-type { display:none;}
-}
+  }
 
-@media only screen and (min-width: 401px) {
-  .optional { display:none;}
-  width: 100%;
-}
+  @media only screen and (min-width: 401px) {
+    .optional { display:none;}
+    width: 100%;
+  }
 
-@media only screen and (min-width: 600px) {
-  .optional { display:none;}
-}
+  @media only screen and (min-width: 600px) {
+    .optional { display:none;}
+  }
 
 `
 
@@ -153,11 +156,14 @@ bgContent = formatLabel(bgContent, "document", subs)
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
 
+
 function Home({loading}) {
   const scrollRef = useRef(null);
-
+  const [lowerRevealed, setLowerRevealed] = useState(false)
   const executeScroll = () => scrollToRef(scrollRef);
-
+  
+ 
+  
   return (
     
     <PageWrapper  className={loading ? "loading" : "loaded"}>

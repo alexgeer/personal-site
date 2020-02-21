@@ -18,10 +18,8 @@ const ThemePicker = ({ className, setTheme, setThemeUserSelected, currentTheme})
       </div>
       <div className="container-content">
         <div className="container-text">
-          <p>Normally, the app will change theme based on route. Using the theme picker allows you to see what a theme looks
-            like when applied to the whole app. Because of the hero image, 
-            it's currently a bit clunky for the landing page, but my goal was simply to demonstrate the logic of theming and to show different design styles.
-          </p>
+          <p>To demonstrate a React's "reactivity", the app will change theme based on route. Using the theme picker allows you to see what a theme looks
+            like when applied to the whole app. </p>
         </div>
         <div className="themes-container">
           {
@@ -29,6 +27,7 @@ const ThemePicker = ({ className, setTheme, setThemeUserSelected, currentTheme})
                 <StyledThemeButton 
                 bg={val.background} 
                 border={val.color1} 
+                hover={val.hover || val.color3}
                 key={key} 
                 themeKey={key} 
                 nameProp={val.name} 
@@ -64,12 +63,12 @@ const StyledThemeButton = styled(ThemeButton)`
  
 
     .button-wrapper:hover {
-        background: ${props => props.theme.color3};
+        background: ${props => props.hover};
 
     }
 
     .button-wrapper.selected {
-        border: solid 3px ${props => props.theme.color3};
+        border: solid 3px ${props => props.hover};
         padding: 5px;
     }
     label {

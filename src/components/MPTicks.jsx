@@ -120,7 +120,7 @@ const MPTicks = () => {
          * greatly diminish the bundle size (33%!!) by splitting the AWS modules import off in its own file
          */
         const API = await getAPI();
-        let data = await API.get("api", "/stocks/MSFT");
+        let data = await API.get("api", "/ticks");
 
         //map the routes to the ticks
         data.ticks.forEach(t => {
@@ -161,7 +161,7 @@ const MPTicks = () => {
             </a>.
           </p>
           <p className="container-text">
-            This API call is made on the backend from an AWS lambda function
+            This API call is made on the serverless backend from an AWS lambda function
           </p>
         </div>
         {/* {loading && <Spinner cnProp = {'spinner'}/>} */}
