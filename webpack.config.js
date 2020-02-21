@@ -6,7 +6,7 @@ module.exports = function(env, argv) {
     plugins: env && env.development ? [
       new BundleAnalyzerPlugin() ] : []
     ,
-    devtool: env && env.development ? "source-map" : "", // enum
+    devtool: argv.mode && argv.mode === 'development' ? "source-map" : "", // enum
     module: {
       rules: [
         {

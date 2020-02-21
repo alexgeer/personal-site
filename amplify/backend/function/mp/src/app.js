@@ -44,10 +44,21 @@ app.get("/ticks", function(req, res) {
       }
 });
 
+app.get("/stocks" , (q,r) => {
+    r.send('ok')
+})
+
 app.get("/stocks/:symbol", function(req, res){
-    let {symbol} = req.params
+    let symbol = req.params.symbol
+
+    if(!symbol){
+      res.json({err:'no symbol provided'})
+      return
+    }
+
+
     try{
-      stockAPI( (data) => 
+      stockAPI(symbol, (data) => 
       {
         res.set('Content-Type', 'application/json')
         res.send(data);

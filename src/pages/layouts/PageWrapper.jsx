@@ -1,11 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import {fadeIn} from '../../styles/anim'
+
+
 let Wrapper = styled.div`
+
 animation: ${fadeIn} 0.4s;
+
 padding: 40px 8px 0px 8px;;
 width: 100%;
 
+display: flex;
+flex-direction: column;
+justify-content: center;
 
  color:${(props) => props.theme.color1};
 
@@ -53,14 +60,15 @@ p{
     line-height: 1.4;
 }
 
+
+
 /* desktop  */
 @media only screen and (min-width: 600px) {
-    margin: 120px auto 100px;
+    margin: 70px auto 100px;
     padding: 0 40px;
 
-    max-width: 900px;
-    display: flex;
-    flex-direction: column;
+    max-width: 900px; 
+
     .page-header {
     margin: 40px auto 10px;
   } 

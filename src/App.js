@@ -43,7 +43,7 @@ const App = withRouter(props => {
           setTheme("bw");
           break;
         case "/work":
-          setTheme("blue");
+          setTheme("dark");
           break;
       }
     }

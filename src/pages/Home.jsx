@@ -1,244 +1,156 @@
 import React, { useRef, useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import { fadeIn } from "../styles/anim";
-
+import PageWrapper from './layouts/PageWrapper'
 
 let Wrapper = styled.div`
-  &.loading {
-    transform: translateZ(0);
-  background-image: url("images/hallway-efe-kurnaz-min.jpg");
-  filter:blur(20px);
-  }
-
-  &.loaded {
-    animation: sharpen .7s both;
-  @keyframes sharpen {
-    from {
-      background-image: url("images/hallway-efe-kurnaz-min.jpg");
-      filter: blur(20px);
-    }
-    to {
-      filter: blur(0px);
-      background-image: url("images/hallway-efe-kurnaz.jpg");
-
-
-    }
-  }
   
-  }
-  background-image: url("images/hallway-efe-kurnaz.jpg");
-  background-position: center; 
-  background-repeat: no-repeat; 
-  background-size: cover; 
 `;
 
-let Section1 = styled.section`
-  margin: auto;
-  text-align: center;
-  height: ${window.innerHeight}px;
+
+
+
+const BackDiv = styled.div`
+width: 375px;
+font-size: 20px;
+margin-top: 26px;
+
+
+word-break: break-all !important;
+color: ${({theme}) => theme.color1};
+.bg-text {
+  opacity: 0.175;
+
+}
+.highlighted {
+  opacity: 1.0;
+  color: ${({theme}) => theme.color3};
+  word-break: break-word !important;
+
+}
+
+.highlighted:first-of-type{
+  font-size: 50px;
+}
+
+@media only screen and (max-width: 400px) {
+  .bg-text:first-of-type { display:none;}
+}
+
+@media only screen and (min-width: 401px) {
+  .optional { display:none;}
   width: 100%;
-  padding-top: 20vh;
-  display: flex;
-  flex-direction: column;
-  color: ${(props) => props.theme.landingTextColor};
-  #name {
-    color: ${(props) => props.theme.color1};
-    font-size: 38px;
-  }
-  h1 {
-    font-size: 52.35px;
-    padding-bottom: 50px;
-  }
-  h2 {
-    padding-bottom: 80.9px;
-    font-size: 32.36px;
-  }
-  h3 {
-    font-size: 20px;
-  }
+}
 
-  text-shadow: 1px 1px 5px rgba(206, 206, 206, 0.62);
-  .spinner {
-    padding-bottom: 30px;
-    position: relative;
-    top: 30%;
-  }
+@media only screen and (min-width: 600px) {
+  .optional { display:none;}
+}
 
-  @media only screen and (min-width: 600px) {
-    padding-top: 40vh;
-  }
-`;
+`
 
-let LearnMore = styled.button`
-  width: 150px;
-  height: 50px;
-  margin: 15px auto;
-  background: transparent;
-  border: 1px solid white;
-  transition: 0.2s ease;
-  color: white;
-  i {
-    font-size: 1.2em;
-    position: relative;
-    left: 10px;
-    transition: 0.2s ease;
-  }
+let  bgContent = `
 
-  &:hover {
-    background: white;
-    color: black;
-    transition: 0.2s ease;
-    i {
-      color: rgba(0, 0, 0, 0);
-      transform: rotate(90deg);
+
+  A document is a written, drawn, presented, or memorialized representation of thought. 
+      The word originates from the Latin documentum, which denotes a "teaching" or "lesson":
+      the verb doceō denotes "to teach". In the past, the word was usually used to denote a 
+      written proof useful as evidence of a truth or fact. In the computer age, "document" 
+      usually denotes a primarily textual computer file, including its structure and format, 
+      e.g. fonts, colors, and images. Contemporarily, "document" is not defined by its transmission 
+      medium, e.g., paper, given the existence of electronic documents document doc·u·ment
+  noun
+  /ˈdäkyəmənt/
+  a piece of written, printed, or electronic matter that provides information or evidence or that serves as an official record.
+  verb
+  /ˈdäkyəˌment/
+  record (something) in written, photographic, or other form. "Document" is defined in 
+  library and information science and documentation science as a fundamental, abstract idea:
+  the word denotes everything that may be represented or memorialized in order to serve as evidence. 
+  The classic example provided by Suzanne Briet is an antelope: "An antelope running wild on the plains of
+    Africa should not be considered a document[;] she rules. But if it were to be captured, taken to a zoo
+    and made an object of study, it has been made into a document. It has become physical evidence being 
+    used by those who study it. Indeed, scholarly articles written about the antelope are secondary documents, 
+    since the antelope itself is the primary document."
+  [3] This opinion has been interpreted as an early expression of actor–network theory.
+  A document is a written, drawn, presented, or memorialized representation of thought. 
+      The word originates from the Latin documentum, which denotes a "teaching" or "lesson":
+      the verb doceō denotes "to teach". In the past, the word was usually used to denote a 
+      written proof useful as evidence of a truth or fact. In the computer age, "document" 
+      usually denotes a primarily textual computer file, including its structure and format, 
+      e.g. fonts, colors, and images. Contemporarily, "document" is not defined by its transmission 
+      medium, e.g., paper, given the existence of electronic documents. doc·u·ment
+  noun
+  /ˈdäkyəmənt/
+  a piece of written, printed, or electronic matter that provides information or evidence or that serves as an official record.
+  verb
+  /ˈdäkyəˌment/
+  record (something) in written, photographic, or other form. "Document" is defined in 
+  library and information science and documentation science as a fundamental, abstract idea:
+  the word denotes everything that may be represented or memorialized in order to serve as evidence. 
+  The classic example provided by Suzanne Briet is an antelope: "An antelope running wild on the plains of
+    Africa should not be considered a document[;] she rules. But if it were to be captured, taken to a zoo
+    and made an object of study, it has been made into a document. It has become physical evidence being 
+    used by those who study it. Indeed, scholarly articles written about the antelope are secondary documents, 
+    since the antelope itself is the primary document."
+  [3] This opinion has been interpreted as an early expression of actor–network theory.A document is a written, drawn, presented, or memorialized representation of thought. 
+      The word originates from the Latin documentum, which denotes a "teaching" or "lesson":
+      the verb doceō denotes "to teach". In the past, the word was usually used to denote a 
+      written proof useful as evidence of a truth or fact. In the computer age, "document" 
+      usually denotes a primarily textual computer file, including its structure and format, 
+      e.g. fonts, colors, and images. Contemporarily, "document" is not defined by its transmission 
+      medium, e.g., paper, given the existence of electronic documents. doc·u·ment
+  noun
+  /ˈdäkyəmənt/
+  a piece of written, printed, or electronic matter that provides information or evidence or that serves as an official record.
+  verb
+  /ˈdäkyəˌment/
+  record (something) in written, photographic, or other form. "Document" is defined in 
+  library and information science and documentation science as a fundamental, abstract idea:
+  the word denotes everything that may be represented or memorialized in order to serve as evidence. 
+  The classic example provided by Suzanne Briet is an antelope: "An antelope running wild on the plains of
+    Africa should not be considered a document[;] she rules. But if it were to be captured, taken to a zoo
+    and made an object of study, it has been made into a document. It has become physical evidence being 
+    used by those who study it. Indeed, scholarly articles written about the antelope are secondary documents, 
+    since the antelope itself is the primary document."
+  [3] This opinion has been interpreted as an early expression of actor–network theory. A document is a written, drawn, presented, or memorialized representation of thought. 
+  The word originates from the Latin, which denotes a "teaching" or "lesson":
+  the verb doceō denotes "to teach". In the past, the word was usually used to denote a 
+  written proof useful as evidence of a truth or fact.
+
+`
+
+
+
+
+/**
+ * Find and highlight relevant keywords within a block of text
+ * @param  {string} label - The text to parse
+ * @param  {string} value - The search keyword to highlight
+ * @return {object} A JSX object containing an array of alternating strings and JSX
+ */
+const formatLabel = (label, value, subs) => {
+  if (!value) {
+    return label;
+  }
+  return (<span>
+    { label.split(value)
+      .reduce((prev, current, i) => {
+        if (!i) {
+        return [<span className='bg-text' key={i}> { current } </span>];
+        }
+
+        //we want the subs to be larger than oter
+        let insert = subs.shift() || value
+
+        return prev.concat( <b className={'highlighted'} key={i + value}>{ insert }</b>, <span className='bg-text' key={i}> { current } </span>);
+      }, [])
     }
-  }
-`;
-
-let Section2Wrapper = styled.section`
-  height: 100vh;
-  display: flex;
-  flex-wrap: wrap;
-
-  div {
-    width: 100%;
-    height: 25%;
-
-    font-weight: 600;
-    font-size: 70px;
-    line-height: .9;
-    text-align: center;
-    padding-top: 10px;
-
-
-    overflow: hidden;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    white-space: wrap;
-  }
-
-  /* make a 2X2 grid on desktops */
-  @media screen and (min-width: 600px) {
-    div {
-      padding-top: 0;
-      font-size: 25vh;
-      line-height: 25vh;
-      width: 50%;
-      height: 50%;
-    }
-  }
-
-  /*TODO: fix this  */
-  @media screen and (max-width: 600px) {
-    #block3 {
-      order: 4;
-    }
-  }
-  /* style the blocks*/
-  #block1,
-  #block4 {
-  }
-
-  /* 2 and 3 get a solid background */
-  #block2 {
-    background-color: rgba(161, 61.8, 100, 0.5);
-    color: whitesmoke;
-  }
-  #block3 {
-    background-color: rgba(100, 61.8, 161, 0.5);
-  }
-
-  /* 1 and 4 get their bg images */
-  #block1 {
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: 50% 60%;
-    background-image: url("images/city2.jpg");
-  }
-
-  #block4 {
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: 50% 60%;
-    background-image: url("images/city2.jpg");
-  }
-`;
-
-const words = [
-  "YOU",
-  "RESULTS",
-  "HEALTH",
-  "GUARANTEE",
-  "DISCOVER",
-  "PROVEN",
-  "SAFETY",
-  "SAVE",
-  "NEW",
-  "BEST",
-  "NOW",
-  "FREE",
-  "INCREASE",
-  "TRY",
-  "OPPORTUNITY",
-  "EASIEST",
-  "COMPARE",
-  "UNIQUE"
-];
-
-const randomRbg = () => Math.floor((Math.random() * 1000) % 255);
-const randomWord = () =>
-  words[Math.floor((Math.random() * 100) % words.length)];
-
-let Section2 = ({ refProp }) => {
-  //colors for the section2 blocks
-  let [color1, setColor1] = useState("rgb(100,100,100)");
-  let [color2, setColor2] = useState("rgb(200,200,200)");
-
-  let [word1, setWord1] = useState(words[0]);
-  let [word2, setWord2] = useState(words[words.length - 1]);
-
-  //this will execute when the component mounts
-  useEffect(() => {
-    let timerReaction = () => {
-      setColor1(`rgb(${randomRbg()},${randomRbg()},${randomRbg()})`);
-      setColor2(color1);
-
-      setWord1(randomWord());
-      setWord2(randomWord());
-    };
-
-    const interval = setInterval(() => timerReaction(), 500);
-
-    //this will execute when the component unmounts
-    return () => {
-      clearInterval(interval);
-    };
-  });
-
-  return (
-    <Section2Wrapper id="second">
-      <div ref={refProp} id="block1"></div>
-      <div style={{ color: color1 }} id="block2">
-        {word1}
-      </div>
-      <div style={{ color: color2 }} id="block3">
-        {word2}
-      </div>
-      <div id="block4"></div>
-    </Section2Wrapper>
-  );
+  </span>);
 };
+let subs = "Hello my name is Alex Geer I think about abstractions like documents and information and how they relate to human beings and in particular how they relate human beings to each other ".split(" ")
+bgContent = formatLabel(bgContent, "document", subs)
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
-
-
-const mapStateToProps = (state, ownProps) => ({
-  // ... computed data from state and optionally ownProps
-})
-
-const mapDispatchToProps = {
-  // ... normally is an object full of action creators
-}
 
 
 function Home({loading}) {
@@ -247,24 +159,19 @@ function Home({loading}) {
   const executeScroll = () => scrollToRef(scrollRef);
 
   return (
-    <Wrapper className={loading ? "loading" : "loaded"}>
-      <Section1 id="top">
-        {/* <Spinner text={"Welcome to My WonderFul Website :)"}></Spinner> */}
-        <h1>HELLO.</h1>
-        <h2>
-          MY NAME IS <span id="name">ALEX GEER</span>.
-        </h2>
-        <h3>
-          I LIKE TO WRITE ELEGANT LINES OF CODE AND CREATE SIMPLE, PLEASING
-          DESIGNS.
-        </h3>
-        <LearnMore onClick={executeScroll}>
-          Learn More
-          <i className="fa fa-angle-double-right"></i>
-        </LearnMore>
-      </Section1>
-      <Section2 refProp={scrollRef} />
-    </Wrapper>
+    
+    <PageWrapper  className={loading ? "loading" : "loaded"}>
+      <BackDiv>
+     <span className='bg-text'>
+        doc·u·ment noun /ˈdäkyəmənt/ a piece of written, printed, or electronic matter that provides information or evidence or that serves as an official record.
+        verb/ˈdäkyəˌment/
+      </span> 
+      <span className='bg-text optional'>
+       doc·u·ment noun /ˈdäkyəmənt/ a piece of written
+      </span> 
+      {bgContent} 
+      </BackDiv>
+    </PageWrapper>
   );
 }
 

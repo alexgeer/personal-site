@@ -120,7 +120,7 @@ const MPTicks = () => {
          * greatly diminish the bundle size (33%!!) by splitting the AWS modules import off in its own file
          */
         const API = await getAPI();
-        let data = await API.get("api", "/ticks");
+        let data = await API.get("api", "/stocks/MSFT");
 
         //map the routes to the ticks
         data.ticks.forEach(t => {

@@ -21,7 +21,7 @@ const routes = [
   {
     path: "/about",
     sidebar: () => <div>About</div>,
-    label: "/about",
+    label: "about",
     main: () => (
       <React.Suspense fallback={<div></div>}>
         <About />
@@ -30,7 +30,7 @@ const routes = [
   },
   {
     path: "/examples",
-    label: "/eg",
+    label: "eg",
     main: ({ setTheme, setThemeUserSelected, currentTheme }) => (
       <React.Suspense fallback={<div></div>}>
         <Examples
@@ -43,7 +43,7 @@ const routes = [
   },
   {
     path: "/work",
-    label: "/work",
+    label: "work",
     main: () => (
       <React.Suspense fallback={<div></div>}>
         <Work />
