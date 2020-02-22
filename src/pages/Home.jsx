@@ -79,7 +79,7 @@ let bgContent = `
       written proof useful as evidence of a truth or fact. In the computer age, "document" 
       usually denotes a primarily textual computer file, including its structure and format, 
       e.g. fonts, colors, and images. Contemporarily, "document" is not defined by its transmission 
-      medium, e.g., paper, given the existence of electronic documents document doc·u·ment
+      medium, e.g., paper, given the existence of electronic document document doc·u·ment
   noun
   /ˈdäkyəmənt/
   a piece of written, printed, or electronic matter that provides information or evidence or that serves as an official record.
