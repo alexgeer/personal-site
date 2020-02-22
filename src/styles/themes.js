@@ -4,8 +4,8 @@ const themes = {}
 themes.main = {
     name:'main',
     homeBackground:'url("images/hallway-efe-kurnaz.jpg")',
-    background: 'whitesmoke',
-    navBackground: 'whitesmoke', //translucent #a0a0a0
+    background: '#dfdfdf',
+    navBackground: '#afafaf', //translucent #a0a0a0
     color1: '#00000099', //light grey
     color2: '#000000aa', //lighter grey
     color3: '#228b22b8', //slightly transparent forestgreen

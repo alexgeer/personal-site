@@ -1,57 +1,74 @@
 import React, { useRef, useState, useEffect } from "react";
-import styled, { keyframes } from "styled-components";
-import PageWrapper from './layouts/PageWrapper'
+import styled from "styled-components";
+import PageWrapper from "./layouts/PageWrapper";
 
+let HomeContainer = styled.div`
+  display: flex;
+  flex-direction: column;
 
-
-let Wrapper = styled.div`
-  
+  @media only screen and (min-width: 1000px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 
-
-
+const ImageContainer = styled.div`
+  margin-top: 40px;
+  background: ${({ theme }) => theme.color3};
+  padding: 10px;
+  border-radius: 10px;
+  width: 40%;
+  color: ${({ theme }) => theme.background};
+`;
 
 const BackDiv = styled.div`
   width: 375px;
   font-size: 20px;
   margin-top: 26px;
 
-
   word-break: break-all !important;
-  color: ${({theme}) => theme.color1};
+  color: ${({ theme }) => theme.color1};
+
   .bg-text {
     opacity: 0.175;
-
   }
-  
+
   .highlighted {
-    opacity: 1.0;
-    color: ${({theme}) => theme.color3};
+    transition: 1s;
+    opacity: 1;
+    color: ${({ theme }) => theme.color3};
     word-break: break-word !important;
+    font-weight: 700;
   }
 
-  .highlighted:first-of-type{
+  .highlighted:first-of-type {
     font-size: 50px;
   }
 
   @media only screen and (max-width: 400px) {
-    .bg-text:first-of-type { display:none;}
+    .bg-text:first-of-type {
+      display: none;
+    }
     width: 100%;
-
   }
 
   @media only screen and (min-width: 401px) {
-    .optional { display:none;}
+    .optional {
+      display: none;
+    }
     width: 100%;
   }
 
   @media only screen and (min-width: 600px) {
-    .optional { display:none;}
+    .optional {
+      display: none;
+    }
+    width: 100%;
+    font-size: 25px;
   }
+`;
 
-`
-
-let  bgContent = `
+let bgContent = `
 
 
   A document is a written, drawn, presented, or memorialized representation of thought. 
@@ -120,10 +137,32 @@ let  bgContent = `
   the verb doceō denotes "to teach". In the past, the word was usually used to denote a 
   written proof useful as evidence of a truth or fact.
 
+`;
+
+
+
+const LightUp = ({ timing, children, className }) => {
+  const [lighted, setLighted] = useState(false);
+
+  useEffect(() => {
+    if (!timing) return;
+
+    let timer = setTimeout(() => {
+      setLighted(true);
+      console.log("timed out");
+    }, timing);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  return <span className={lighted ? className + " highlighted" : className + " bg-text"}>{children}</span>;
+};
+
+const StyledLightup = styled(LightUp)`
+  b {transition: .3s;}
+
+
 `
-
-
-
 
 /**
  * Find and highlight relevant keywords within a block of text
@@ -135,48 +174,75 @@ const formatLabel = (label, value, subs) => {
   if (!value) {
     return label;
   }
-  return (<span>
-    { label.split(value)
-      .reduce((prev, current, i) => {
-        if (!i) {
-        return [<span className='bg-text' key={i}> { current } </span>];
-        }
 
-        //we want the subs to be larger than oter
-        let insert = subs.shift() || value
+  let counter = 1;
+  let interval = 1000;
 
-        return prev.concat( <b className={'highlighted'} key={i + value}>{ insert }</b>, <span className='bg-text' key={i}> { current } </span>);
-      }, [])
-    }
-  </span>);
+  return [
+    label.split(value).reduce((prev, current, i) => {
+      if (!i) {
+        return [
+          <span className="bg-text" key={i}>
+            {" "}
+            {current}{" "}
+          </span>
+        ];
+      }
+
+      //we want the subs to be larger than oter
+      let insert = subs.shift() || value;
+
+      let val = prev.concat(
+        <LightUp timing={counter < 7 ? interval : undefined} key={i + value}>
+          {insert}
+        </LightUp>,
+        <span className="bg-text" key={i}>
+          {" "}
+          {current}{" "}
+        </span>
+      );
+      interval += 333;
+      counter++;
+      return val;
+    }, [])
+  ];
 };
-let subs = "Hello my name is Alex Geer I think about abstractions like documents and information and how they relate to human beings and in particular how they relate human beings to each other ".split(" ")
-bgContent = formatLabel(bgContent, "document", subs)
+let subs = "Hello. My name is Alex Geer. I think about abstractions like documents and information and how they relate to human beings and in particular how they relate human beings to each other ".split(
+  " "
+);
+bgContent = formatLabel(bgContent, "document", subs);
 
-const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
+const HeroText = () => {
+  return bgContent.map(e => {
+    return e;
+  });
+};
 
+const scrollToRef = ref => window.scrollTo(0, ref.current.offsetTop);
 
-
-function Home({loading}) {
+function Home({ loading }) {
   const scrollRef = useRef(null);
-  const [lowerRevealed, setLowerRevealed] = useState(false)
+  const [lowerRevealed, setLowerRevealed] = useState(false);
   const executeScroll = () => scrollToRef(scrollRef);
-  
- 
-  
+
   return (
-    
-    <PageWrapper  className={loading ? "loading" : "loaded"}>
-      <BackDiv>
-     <span className='bg-text'>
-        doc·u·ment noun /ˈdäkyəmənt/ a piece of written, printed, or electronic matter that provides information or evidence or that serves as an official record.
-        verb/ˈdäkyəˌment/
-      </span> 
-      <span className='bg-text optional'>
-       doc·u·ment noun /ˈdäkyəmənt/ a piece of written
-      </span> 
-      {bgContent} 
-      </BackDiv>
+    <PageWrapper className={loading ? "loading" : "loaded"}>
+      <HomeContainer>
+        <BackDiv>
+          <span className="bg-text">
+            doc·u·ment noun /ˈdäkyəmənt/ a piece of written, printed, or
+            electronic matter that provides information or evidence or that
+            serves as an official record. verb/ˈdäkyəˌment/
+          </span>
+          <span className="bg-text optional">
+            doc·u·ment noun /ˈdäkyəmənt/ a piece of written
+          </span>
+          <HeroText />
+        </BackDiv>
+        {/* <ImageContainer>
+          <h3 style={{color:'#fff'}}>Hi there.</h3>
+      </ImageContainer> */}
+      </HomeContainer>
     </PageWrapper>
   );
 }
