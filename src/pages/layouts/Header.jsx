@@ -81,7 +81,7 @@ const Container = styled.div`
   width: 100%;
   padding-top: 20px;
 
-  animation: ${navDropIn} 1s cubic-bezier(0.11, 0.82, 0.55, 0.97);
+  animation: ${navDropIn} .4s cubic-bezier(0.11, 0.82, 0.55, 0.97);
 `;
 
 function Header({ routes, timing }) {

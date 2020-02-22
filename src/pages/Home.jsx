@@ -34,15 +34,17 @@ const BackDiv = styled.div`
   }
 
   .highlighted {
-    transition: 1s;
+    transition: 1s ease-in;
     opacity: 1;
     color: ${({ theme }) => theme.color3};
     word-break: break-word !important;
     font-weight: 700;
+    font-size: 25px;
   }
 
-  .highlighted:first-of-type {
-    font-size: 50px;
+  .first {
+    transition: 2.25s ease-in;
+    font-size: 50px !important;
   }
 
   @media only screen and (max-width: 400px) {
@@ -141,7 +143,7 @@ let bgContent = `
 
 
 
-const LightUp = ({ timing, children, className }) => {
+const LightUp = ({ timing, children, first=false, className }) => {
   const [lighted, setLighted] = useState(false);
 
   useEffect(() => {
@@ -149,20 +151,17 @@ const LightUp = ({ timing, children, className }) => {
 
     let timer = setTimeout(() => {
       setLighted(true);
-      console.log("timed out");
     }, timing);
 
     return () => clearTimeout(timer);
   }, []);
 
-  return <span className={lighted ? className + " highlighted" : className + " bg-text"}>{children}</span>;
+  let cn = lighted ? "highlighted" : "bg-text"
+  if(lighted && first)
+    cn += " first"
+
+  return <span className={cn}>{children}</span>;
 };
-
-const StyledLightup = styled(LightUp)`
-  b {transition: .3s;}
-
-
-`
 
 /**
  * Find and highlight relevant keywords within a block of text
@@ -176,7 +175,7 @@ const formatLabel = (label, value, subs) => {
   }
 
   let counter = 1;
-  let interval = 1000;
+  let interval = 2000;
 
   return [
     label.split(value).reduce((prev, current, i) => {
@@ -191,9 +190,10 @@ const formatLabel = (label, value, subs) => {
 
       //we want the subs to be larger than oter
       let insert = subs.shift() || value;
-
+      let first = i === 1
+      
       let val = prev.concat(
-        <LightUp timing={counter < 7 ? interval : undefined} key={i + value}>
+        <LightUp first={first} timing={counter < 7 ? interval : undefined} key={i + value}>
           {insert}
         </LightUp>,
         <span className="bg-text" key={i}>
@@ -201,7 +201,8 @@ const formatLabel = (label, value, subs) => {
           {current}{" "}
         </span>
       );
-      interval += 333;
+      first ? interval += 2000 : interval += 300;
+      
       counter++;
       return val;
     }, [])
