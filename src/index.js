@@ -12,3 +12,5 @@ import img7 from '../assets/images/react.png'
 import pdf1 from '../assets/pdf/AlexGeerResume.pdf'
 
 import index1 from '../assets/index.html'
+
+import css1 from '../node_modules/react-vis/dist/style.css';

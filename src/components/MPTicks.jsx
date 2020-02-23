@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import styled, { withTheme } from "styled-components";
 import getAPI from "./DynamicAPI";
-
 import Container from "../pages/layouts/Container";
+
 import {
   XYPlot,
   VerticalBarSeries,
   VerticalGridLines,
   HorizontalGridLines,
   XAxis,
-  YAxis
+  YAxis,
+  Crosshair
 } from "react-vis";
 
 const StyledContainer = styled(Container)`
@@ -40,21 +41,48 @@ const StyledButton = styled.button`
     color: ${({ theme }) => theme.background};
   }
 `;
+
+const titleFormat = list => {
+  let value = list[0];
+  if (value) {
+    return {
+      title: "grade",
+      value: value.x
+    };
+  }
+};
+
+function itemsFormat(values) {
+  return values.map((v, i) => {
+    if (v) {
+      return {value: v.y, title: 'count'};
+    }
+  });
+}
+
+
 const Graph = withTheme(({ data, theme }) => {
+  const [crosshairValues, setCrosshairValues] = useState([]);
+
   return (
     <div>
       <XYPlot
-        yDomain={[0, 15]}
+        yDomain={data.length ? undefined : [0, 10]}
         animation
         xType="ordinal"
         width={window.innerWidth > 600 ? 600 : 300}
         height={300}
+        onMouseLeave={() => setCrosshairValues([])}
       >
-        <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis style={{ text: { fill: theme.color1 } }} animation={false} />
         <YAxis style={{ text: { fill: theme.color1 } }} />
-        <VerticalBarSeries color={theme.color3} data={data} />
+        <VerticalBarSeries
+          onNearestX={(value, event) => setCrosshairValues([value])}
+          color={theme.color3}
+          data={data}
+        />
+        <Crosshair itemsFormat={itemsFormat} titleFormat={titleFormat} values={crosshairValues} />
       </XYPlot>
     </div>
   );
@@ -180,7 +208,7 @@ const MPTicks = () => {
             react-vis, a component library built around d3, and is developed by
             Uber.
           </p>
-          <div style={{marginBottom:'15px'}}>
+          <div style={{ marginBottom: "15px" }}>
             <StyledButton onClick={() => setSelected("routes")}>
               routes
             </StyledButton>
