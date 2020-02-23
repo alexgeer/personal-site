@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled, { withTheme } from "styled-components";
 import getAPI from "./DynamicAPI";
-import Spinner from "./LoadingSpinner";
 
 import Container from "../pages/layouts/Container";
+import {
+  XYPlot,
+  VerticalBarSeries,
+  VerticalGridLines,
+  HorizontalGridLines,
+  XAxis,
+  YAxis
+} from "react-vis";
 
-let StyledContainer = styled(Container)`
+const StyledContainer = styled(Container)`
   margin-bottom: 30px;
   width: 100%;
 
@@ -18,97 +25,44 @@ let StyledContainer = styled(Container)`
   }
 `;
 
-const TickList = styled.ul`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-`;
+const StyledButton = styled.button`
+  width: 70px;
+  height: 30px;
 
-const Thumbnail = props => (
-  <li className={props.className}>
-    <img className="shadow-4" src={props.src} alt="" />
-  </li>
-);
-
-const StyledThumbnail = styled(Thumbnail)`
-  width: 100px;
-  height: 100px;
-  padding: 10px;
-  margin: 0 5px;
-
+  margin: 0 10px;
   border-radius: 5px;
 
-  img {
-    border-radius: 5px;
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
-`;
+  background-color:${ ({theme}) => theme.color2};
+  color: ${ ({theme}) => theme.background};
 
-const Tick = ({ className, tick, open }) => {
+  &:hover {
+    background-color: ${ ({theme}) => theme.color3};
+    color: ${ ({theme}) => theme.background};
+
+  }
+`
+const Graph = withTheme(({ data, theme }) => {
   return (
-    <div className={className + ' material-container'}>
-      <div className="card-header">
-        <div className='card-header-img'><img src={tick.route.imgMedium}></img></div>
-        <div className='card-header-text'>
-          <a className="inline-link" href={tick.route.url}><h4>{tick.route.name}</h4></a>
-          <h5>{tick.route.type + ' -- ' + tick.route.rating}</h5>
-          </div>
-      </div>  
+    <div>
+      <XYPlot
+        yDomain={[0, 15]}
+        animation
+        xType="ordinal"
+        width={window.innerWidth > 600 ? 600 : 300}
+        height={300}
+      >
+        <VerticalGridLines />
+        <HorizontalGridLines />
+        <XAxis style={{text:{fill:theme.color1}}} animation={false}/>
+        <YAxis style={{text:{fill:theme.color1}}} />
+        <VerticalBarSeries color={theme.color3} data={data} />
+      </XYPlot>
     </div>
   );
-};
+})
 
-const StyledTick = styled(Tick)`
-
-    
-  .card-header-text{
-    padding: 20px;
-    h4{
-      font-size: 28px;
-    }
-    h5 {
-      font-size: 15px;
-    }
-
-  }
-
-  .card-header-img {
-    width: 300px;
-    height: 200px;
-    overflow: hidden;
-  }
-
-  overflow: hidden;
-  margin-bottom: 20px;
-
-
-  .tick-header {
-    height: 120px;
-    padding: 10px;
-    display: flex;
-
-    flex-direction: row;
-  }
-
-  @media screen and (min-width: 600px )
-  {
-   
-    .card-header-img{
-    width: 450px;
-    height: 300px;
-    }
-  }
-`;
-
-const MPTicks = () => {
-  let [ticks, setTicks] = useState([]);
-  let [loading, setLoading] = useState(true);
-
+const useMPAPI = (setTicks, cleanUp) => {
   let mounted = false;
-
   useEffect(() => {
     mounted = true;
     //we have to define the async func w/i the hook
@@ -120,17 +74,48 @@ const MPTicks = () => {
          * greatly diminish the bundle size (33%!!) by splitting the AWS modules import off in its own file
          */
         const API = await getAPI();
-        let data = await API.get("api", "/ticks");
+        const data = await API.get("api", "/ticks");
 
-        //map the routes to the ticks
-        data.ticks.forEach(t => {
-          let found = data.routes.find(r => r.id === t.routeId);
-          //add the route to the tick
-          t.route = found;
+        // //map the routes to the ticks
+        // data.ticks.forEach(t => {
+        //   let found = data.routes.find(r => r.id === t.routeId);
+        //   //add the route to the tick
+        //   t.route = found;
+        // });
+
+        let temp = {
+          routes: [
+            { x: "5.6", y: 0 },
+            { x: "5.7", y: 0 },
+            { x: "5.8", y: 0 },
+            { x: "5.9", y: 0 },
+            { x: "5.10", y: 0 },
+            { x: "5.11", y: 0 },
+            { x: "5.12", y: 0 }
+          ],
+          boulders: [
+            { x: "V0", y: 0 },
+            { x: "V1", y: 0 },
+            { x: "V2", y: 0 },
+            { x: "V3", y: 0 },
+            { x: "V4", y: 0 },
+            { x: "V5", y: 0 },
+            { x: "V6", y: 0 }
+          ]
+        };
+
+        data.routes.forEach(r => {
+          let d;
+          if (r.type !== "Boulder")
+            d = temp.routes.find(e => r.rating.startsWith(e.x));
+          else d = temp.boulders.find(e => r.rating.startsWith(e.x));
+
+          if (d === undefined) return;
+
+          d.y++;
         });
-
         //update state
-        if (mounted) setTicks(data.ticks);
+        if (mounted) setTicks(temp);
         // setLoading(false);
       } catch (err) {
         console.error(err);
@@ -142,6 +127,35 @@ const MPTicks = () => {
       mounted = false;
     };
   }, []);
+};
+
+const MPTicks = () => {
+  //initial value for tick data
+  let temp = {
+    routes: [
+      { x: "5.6", y: 0 },
+      { x: "5.7", y: 0 },
+      { x: "5.8", y: 0 },
+      { x: "5.9", y: 0 },
+      { x: "5.10", y: 0 },
+      { x: "5.11", y: 0 },
+      { x: "5.12", y: 0 }
+    ],
+    boulders: [
+      { x: "V0", y: 0 },
+      { x: "V1", y: 0 },
+      { x: "V2", y: 0 },
+      { x: "V3", y: 0 },
+      { x: "V4", y: 0 },
+      { x: "V5", y: 0 },
+      { x: "V6", y: 0 }
+    ]
+  };
+
+  const [ticks, setTicks] = useState(temp);
+  const [selected, setSelected] = useState('routes');
+
+  useMPAPI(setTicks);
 
   return (
     <StyledContainer className="material-container">
@@ -151,30 +165,30 @@ const MPTicks = () => {
       <div className="container-content">
         <div className="container-text">
           <p className="container-text">
-            My four most recent climbs that I bothered to post on Mountain
-            Project, pulled from my profile via the {" "}
+            Visualization of climbs that I bothered to post on Mountain Project,
+            pulled from my profile via the{" "}
             <a
               className="inline-link"
               href="https://www.mountainproject.com/data"
             >
               MP data API
-            </a>.
+            </a>
+            .
           </p>
           <p className="container-text">
-            This API call is made on the serverless backend from an AWS lambda function
+            The data is fetched from Mountain Project on my serverless backend
+            from an AWS lambda and delivered to the app. The graph is made using
+            react-vis, a component library built around d3, and is developed by
+            Uber.
           </p>
+          <StyledButton onClick={() => setSelected('routes')}>routes</StyledButton>
+          <StyledButton onClick={() => setSelected('boulders')}>boulders</StyledButton>
+          <Graph data={ticks[selected]} />
         </div>
         {/* {loading && <Spinner cnProp = {'spinner'}/>} */}
-
-        <TickList>
-          {ticks.map(t => (
-            <StyledTick tick={t} open={true} key={t.routeId} />
-          ))}
-        </TickList>
       </div>
     </StyledContainer>
   );
 };
-
 
 export default MPTicks;

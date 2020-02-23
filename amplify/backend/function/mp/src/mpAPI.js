@@ -26,8 +26,6 @@ const mpAPI = cb => {
     // }
     //parse the body and get the tick list
     let ticks = JSON.parse(res1.body).ticks;
-    //get the first 4 ticks
-    ticks = ticks.slice(0, 4);
 
     //map the tick list to a list of just ids and join with ','
     let routeIds = ticks.map(x => x.routeId).join();

@@ -1,6 +1,6 @@
 
 const themes = {}
-
+// rgb(21, 177, 155); possible main theme
 themes.main = {
     name:'main',
     homeBackground:'url("images/hallway-efe-kurnaz.jpg")',
