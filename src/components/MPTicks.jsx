@@ -6,7 +6,6 @@ import Container from "../pages/layouts/Container";
 import {
   XYPlot,
   VerticalBarSeries,
-  VerticalGridLines,
   HorizontalGridLines,
   XAxis,
   YAxis,
@@ -40,6 +39,10 @@ const StyledButton = styled.button`
     background-color: ${({ theme }) => theme.color3};
     color: ${({ theme }) => theme.background};
   }
+
+  &:focus {
+    background-color: ${({ theme }) => theme.color3};
+  }
 `;
 
 const titleFormat = list => {
@@ -61,13 +64,13 @@ function itemsFormat(values) {
 }
 
 
-const Graph = withTheme(({ data, theme }) => {
+const Graph = withTheme(({ data, theme, loaded, yDomain }) => {
   const [crosshairValues, setCrosshairValues] = useState([]);
 
   return (
     <div>
       <XYPlot
-        yDomain={data.length ? undefined : [0, 10]}
+        yDomain={yDomain}
         animation
         xType="ordinal"
         width={window.innerWidth > 600 ? 600 : 300}
@@ -76,9 +79,9 @@ const Graph = withTheme(({ data, theme }) => {
       >
         <HorizontalGridLines />
         <XAxis style={{ text: { fill: theme.color1 } }} animation={false} />
-        <YAxis style={{ text: { fill: theme.color1 } }} />
+         <YAxis style={{ text: { fill: theme.color1 } }} />
         <VerticalBarSeries
-          onNearestX={(value, event) => setCrosshairValues([value])}
+          onNearestX={(value) => setCrosshairValues([value])}
           color={theme.color3}
           data={data}
         />
@@ -88,7 +91,7 @@ const Graph = withTheme(({ data, theme }) => {
   );
 });
 
-const useMPAPI = (setTicks, cleanUp) => {
+const useMPAPI = (setTicks, setLoaded, setYDomain) => {
   let mounted = false;
   useEffect(() => {
     mounted = true;
@@ -109,40 +112,23 @@ const useMPAPI = (setTicks, cleanUp) => {
         //   //add the route to the tick
         //   t.route = found;
         // });
+     
 
-        let temp = {
-          routes: [
-            { x: "5.6", y: 0 },
-            { x: "5.7", y: 0 },
-            { x: "5.8", y: 0 },
-            { x: "5.9", y: 0 },
-            { x: "5.10", y: 0 },
-            { x: "5.11", y: 0 },
-            { x: "5.12", y: 0 }
-          ],
-          boulders: [
-            { x: "V0", y: 0 },
-            { x: "V1", y: 0 },
-            { x: "V2", y: 0 },
-            { x: "V3", y: 0 },
-            { x: "V4", y: 0 },
-            { x: "V5", y: 0 },
-            { x: "V6", y: 0 }
-          ]
-        };
+        
+        if (mounted) {
+          setLoaded(true)
+          let upper = 0 
+          data.routes.forEach(r => upper < r.y ? upper = r.y : null )
+          console.log(upper)
+          setYDomain([0, upper])
 
-        data.routes.forEach(r => {
-          let d;
-          if (r.type !== "Boulder")
-            d = temp.routes.find(e => r.rating.startsWith(e.x));
-          else d = temp.boulders.find(e => r.rating.startsWith(e.x));
-
-          if (d === undefined) return;
-
-          d.y++;
-        });
-        //update state
-        if (mounted) setTicks(temp);
+          setTimeout( 
+            () => {
+              setTicks(data)
+              setTimeout( () => setYDomain(undefined), 400)
+            }, 200)
+          ;
+        } 
         // setLoading(false);
       } catch (err) {
         console.error(err);
@@ -180,9 +166,11 @@ const MPTicks = () => {
   };
 
   const [ticks, setTicks] = useState(temp);
+  const [loaded, setLoaded] = useState(false);
+  const [yDomain, setYDomain] = useState([0,10]);
   const [selected, setSelected] = useState("routes");
 
-  useMPAPI(setTicks);
+  useMPAPI(setTicks, setLoaded, setYDomain);
 
   return (
     <StyledContainer className="material-container">
@@ -208,15 +196,17 @@ const MPTicks = () => {
             react-vis, a component library built around d3, and is developed by
             Uber.
           </p>
+          {loaded && 
           <div style={{ marginBottom: "15px" }}>
+            
             <StyledButton onClick={() => setSelected("routes")}>
               routes
             </StyledButton>
             <StyledButton onClick={() => setSelected("boulders")}>
               boulders
             </StyledButton>
-          </div>
-          <Graph data={ticks[selected]} />
+          </div>}
+          <Graph loaded={loaded} yDomain={yDomain} data={ticks[selected]} />
         </div>
         {/* {loading && <Spinner cnProp = {'spinner'}/>} */}
       </div>

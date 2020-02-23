@@ -33,9 +33,9 @@ app.use(function(req, res, next) {
 
 app.get("/ticks", function(req, res) {
       try{
-        mpAPI( (ticks, routes) => 
+        mpAPI( (body) => 
         {
-          res.json({ ticks, routes, url: req.url });
+          res.json(body);
         })
       }
       catch (err)

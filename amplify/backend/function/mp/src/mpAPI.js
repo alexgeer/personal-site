@@ -25,12 +25,12 @@ const mpAPI = cb => {
     //   ticks: []
     // }
     //parse the body and get the tick list
-    let ticks = JSON.parse(res1.body).ticks;
+    const ticks = JSON.parse(res1.body).ticks;
 
     //map the tick list to a list of just ids and join with ','
-    let routeIds = ticks.map(x => x.routeId).join();
+    const routeIds = ticks.map(x => x.routeId).join();
 
-    let routesArg = url.format({
+    const routesArg = url.format({
       protocol: "https",
       hostname: "mountainproject.com",
       pathname: "/data/get-routes",
@@ -41,12 +41,45 @@ const mpAPI = cb => {
     });
 
 
-    request(routesArg, (err2, res2, body2) => {
+    request(routesArg, (err2, res2) => {
       if (err2) throw err2;
 
-      let routes;
-      routes = JSON.parse(res2.body).routes;
-      cb(ticks, routes);
+      let ticks = JSON.parse(res2.body).routes
+
+      let body = {
+        routes: [
+          { x: "5.6", y: 0 },
+          { x: "5.7", y: 0 },
+          { x: "5.8", y: 0 },
+          { x: "5.9", y: 0 },
+          { x: "5.10", y: 0 },
+          { x: "5.11", y: 0 },
+          { x: "5.12", y: 0 }
+        ],
+        boulders: [
+          { x: "V0", y: 0 },
+          { x: "V1", y: 0 },
+          { x: "V2", y: 0 },
+          { x: "V3", y: 0 },
+          { x: "V4", y: 0 },
+          { x: "V5", y: 0 },
+          { x: "V6", y: 0 }
+        ]
+      };
+
+      ticks.forEach(t => {
+        let d;
+        
+        if (t.type !== "Boulder")
+          d = body.routes.find(e => t.rating.startsWith(e.x));
+        else d = body.boulders.find(e => t.rating.startsWith(e.x));
+
+        if (d === undefined) return;
+
+        d.y++;
+      });
+      //send only the routes
+      cb(body);
     });
   });
 };
