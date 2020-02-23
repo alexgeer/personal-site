@@ -32,15 +32,14 @@ const StyledButton = styled.button`
   margin: 0 10px;
   border-radius: 5px;
 
-  background-color:${ ({theme}) => theme.color2};
-  color: ${ ({theme}) => theme.background};
+  background-color: ${({ theme }) => theme.color2};
+  color: ${({ theme }) => theme.background};
 
   &:hover {
-    background-color: ${ ({theme}) => theme.color3};
-    color: ${ ({theme}) => theme.background};
-
+    background-color: ${({ theme }) => theme.color3};
+    color: ${({ theme }) => theme.background};
   }
-`
+`;
 const Graph = withTheme(({ data, theme }) => {
   return (
     <div>
@@ -53,13 +52,13 @@ const Graph = withTheme(({ data, theme }) => {
       >
         <VerticalGridLines />
         <HorizontalGridLines />
-        <XAxis style={{text:{fill:theme.color1}}} animation={false}/>
-        <YAxis style={{text:{fill:theme.color1}}} />
+        <XAxis style={{ text: { fill: theme.color1 } }} animation={false} />
+        <YAxis style={{ text: { fill: theme.color1 } }} />
         <VerticalBarSeries color={theme.color3} data={data} />
       </XYPlot>
     </div>
   );
-})
+});
 
 const useMPAPI = (setTicks, cleanUp) => {
   let mounted = false;
@@ -153,7 +152,7 @@ const MPTicks = () => {
   };
 
   const [ticks, setTicks] = useState(temp);
-  const [selected, setSelected] = useState('routes');
+  const [selected, setSelected] = useState("routes");
 
   useMPAPI(setTicks);
 
@@ -181,8 +180,14 @@ const MPTicks = () => {
             react-vis, a component library built around d3, and is developed by
             Uber.
           </p>
-          <StyledButton onClick={() => setSelected('routes')}>routes</StyledButton>
-          <StyledButton onClick={() => setSelected('boulders')}>boulders</StyledButton>
+          <div style={{marginBottom:'15px'}}>
+            <StyledButton onClick={() => setSelected("routes")}>
+              routes
+            </StyledButton>
+            <StyledButton onClick={() => setSelected("boulders")}>
+              boulders
+            </StyledButton>
+          </div>
           <Graph data={ticks[selected]} />
         </div>
         {/* {loading && <Spinner cnProp = {'spinner'}/>} */}
