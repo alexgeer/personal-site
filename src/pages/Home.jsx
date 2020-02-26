@@ -26,7 +26,7 @@ const LearnMore = styled.button`
 const Blurb = styled.div`
 padding-top: 20px;
 height: ${ ({height}) => height }px;
-
+min-height: 400px;
 .greeting {
   padding-bottom: 15px;
 }

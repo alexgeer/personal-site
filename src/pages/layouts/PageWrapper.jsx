@@ -64,7 +64,7 @@ p{
 
 /* desktop  */
 @media only screen and (min-width: 600px) {
-    margin: 70px auto 100px;
+    margin: 70px auto 0px;
     padding: 0 40px;
 
     max-width: 900px; 
