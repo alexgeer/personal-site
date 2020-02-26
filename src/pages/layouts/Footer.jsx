@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const FooterContainer = styled.div`
+const FooterContainer = styled.footer`
  display: flex;
  flex-direction: column;
  align-items: center;
@@ -26,7 +26,7 @@ const FooterContainer = styled.div`
 
 const Footer = () => {
   return (
-    <FooterContainer>
+    <FooterContainer id='footer'>
       <a href="mailto:geer.alex@gmail.com">geer.alex@gmail.com</a>
       <a href="https://github.com/alexgeer">
         <img src="images/github.png" />

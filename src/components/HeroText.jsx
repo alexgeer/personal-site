@@ -40,7 +40,7 @@ const BackDiv = styled.div`
             bottom: 0;
             left: 0%;
             width: 100%;
-            height: 400px;
+            height: 300px;
             background: -webkit-linear-gradient(
                     #FFFFFF00 0%,
                     ${ ({theme}) => theme.background} 100%

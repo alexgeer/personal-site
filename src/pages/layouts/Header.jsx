@@ -103,8 +103,8 @@ function Header({ routes, timing }) {
 
   let cn = visible ? "" : "hidden";
   return (
-    <header>
-      <Container className={cn}>
+    <header >
+      <Container id="header" className={cn}>
         <Nav>
           <ul className="nav-list">
             <li>
