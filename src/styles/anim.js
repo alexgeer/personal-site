@@ -19,4 +19,10 @@ const navDropIn = keyframes`
 `
 
 
-export {fadeIn, navDropIn}
+const blinking = keyframes`{
+  0% {opacity: 0;}
+  50% {opacity: 1.0;}
+  100% {opacity: 0;}
+}
+`
+export {fadeIn, navDropIn, blinking}

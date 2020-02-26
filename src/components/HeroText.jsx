@@ -4,11 +4,17 @@ import styled from "styled-components";
 
 const BackDiv = styled.div`
   width: 375px;
-  font-size: 20px;
+  height: ${window.innerHeight}px;
+
   margin-top: 26px;
 
+  position: relative;
+  overflow-y:  hidden;
+  font-size: 20px;
   word-break: break-all !important;
+
   color: ${({ theme }) => theme.color1};
+
 
   .bg-text {
     opacity: 0.175;
@@ -27,6 +33,35 @@ const BackDiv = styled.div`
     transition: 2.25s ease-in;
     font-size: 50px !important;
   }
+
+  &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0%;
+            width: 100%;
+            height: 400px;
+            background: -webkit-linear-gradient(
+                    #FFFFFF00 0%,
+                    ${ ({theme}) => theme.background} 100%
+            );
+            /* background-image: -moz-linear-gradient(
+                    ${ ({theme}) => theme.background} 0%,
+                    rgba(255, 255, 255, 1) 100%
+            );
+            background-image: -o-linear-gradient(
+                    ${ ({theme}) => theme.background} 0%,
+                    rgba(255, 255, 255, 1) 100%
+            );
+            background-image: linear-gradient(
+                    ${ ({theme}) => theme.background} 0%,
+                    rgba(255, 255, 255, 1) 100%
+            );
+            background-image: -ms-linear-gradient(
+                    ${ ({theme}) => theme.background} 0%,
+                    rgba(255, 255, 255, 1) 100%
+            ); */
+        }
 
   @media only screen and (max-width: 400px) {
     .bg-text:first-of-type {
