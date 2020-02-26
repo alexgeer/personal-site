@@ -7,7 +7,7 @@ let Wrapper = styled.div`
 
 animation: ${fadeIn} 0.4s;
 
-padding: 40px 8px 0px 8px;;
+padding: 65px 8px 0px 8px;;
 width: 100%;
 
 display: flex;
