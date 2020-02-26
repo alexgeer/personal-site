@@ -26,7 +26,6 @@ export default createGlobalStyle`
   }
   body {
     -webkit-font-smoothing: antialiased;
-    color:	rgb(255, 255, 153);
     background: ${props => props.theme.background};
   }
 

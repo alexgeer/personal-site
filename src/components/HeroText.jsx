@@ -79,6 +79,11 @@ A document is a written, drawn, presented, or memorialized representation of tho
     usually denotes a primarily textual computer file, including its structure and format, 
     e.g. fonts, colors, and images. Contemporarily, "document" is not defined by its transmission 
     medium, e.g., paper, given the existence of electronic documents. doc·u·ment
+
+
+`;
+
+let temp =`
 noun
 /ˈdäkyəmənt/
 a piece of written, printed, or electronic matter that provides information or evidence or that serves as an official record.
@@ -116,8 +121,7 @@ The classic example provided by Suzanne Briet is an antelope: "An antelope runni
 The word originates from the Latin, which denotes a "teaching" or "lesson":
 the verb doceō denotes "to teach". In the past, the word was usually used to denote a 
 written proof useful as evidence of a truth or fact.
-
-`;
+`
 
 /**
  * Find and highlight relevant keywords within a block of text

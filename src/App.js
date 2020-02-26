@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import GlobalStyles from "./styles/global";
 import themes from "./styles/themes";
 
-import { Header, Main } from "./pages/layouts";
+import { Header, Main, Footer} from "./pages/layouts";
 import routes from "./routes";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -69,6 +69,7 @@ const App = withRouter(props => {
           ))}
         </Switch>
       </Main>
+      <Footer/>
       <GlobalStyles />
     </ThemeProvider>
   );
