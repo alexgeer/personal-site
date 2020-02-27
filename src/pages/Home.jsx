@@ -59,6 +59,7 @@ function Home({ loading }) {
     let w = window.innerHeight
     let f = document.getElementById("footer").offsetHeight
     let h = document.getElementById("header").offsetHeight
+    console.log(w,f,h)
     setBlurbHeight(w - f - h)
   }, [])
 
