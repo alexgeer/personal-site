@@ -17,7 +17,7 @@ const LearnMore = styled.button`
   opacity: 0;
   color: ${({ theme }) => theme.color3};
   animation: ${blinking} 3s infinite;
-  /* animation-delay: 3s; */
+  animation-delay: 2s;
 
   z-index: 2;
 
