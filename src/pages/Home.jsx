@@ -13,7 +13,7 @@ const LearnMore = styled.button`
   background: unset;
   position: absolute;
   top: 90%;
-  right: 45%;
+  right: 47%;
   opacity: 0;
   color: ${({ theme }) => theme.color3};
   animation: ${blinking} 3s infinite;
@@ -27,6 +27,7 @@ const Blurb = styled.div`
 padding-top: 20px;
 height: ${ ({height}) => height }px;
 min-height: 400px;
+
 .greeting {
   padding-bottom: 15px;
 }
@@ -39,11 +40,8 @@ a {
   text-decoration: underline;
 }
 
-a:hover {color: ${ ({theme}) => theme.color3}}
+a:hover {color: ${ ({theme}) => theme.color3};}
 
-@media screen only and (min-width: 600px) {
-  height: 300px;
-}
 `
 
 const scrollToRef = ref => window.scrollTo(0, ref.current.offsetTop);
@@ -57,7 +55,9 @@ function Home({ loading }) {
   useEffect( () => {
     
     let w = window.innerHeight
-    let f = document.getElementById("footer").offsetHeight
+    //TODO getting the height is behaving differently in the dev and prod environments
+
+    let f = window.innerWidth > 600 ? 95 : 159
     let h = document.getElementById("header").offsetHeight
     console.log(w,f,h)
     setBlurbHeight(w - f - h)
