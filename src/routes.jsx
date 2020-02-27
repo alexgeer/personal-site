@@ -20,7 +20,7 @@ const FallBack = ( {className} ) =>
 
 const NoMatch = ( {className} ) => 
 <div className={className}>
-  404 - route not found
+  <div className="error">404 - route not found</div>
   <img src="images/picard.jpg" alt=""/>
 </div>
 
@@ -34,6 +34,8 @@ const StyledNoMatch = styled(NoMatch)`
 text-align: center;
 height: ${window.innerHeight}px;
 padding-top: 100px;
+.error  {font-size:25px;}
+
 img {
   width: 100%;
   height: auto;
