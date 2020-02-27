@@ -10,6 +10,7 @@ import img6 from '../assets/images/node.png'
 import img7 from '../assets/images/react.png'
 import img8 from '../assets/images/el-cap.jpg'
 import img9 from '../assets/images/github.png'
+import img10 from '../assets/images/picard.jpg'
 
 import pdf1 from '../assets/pdf/AlexGeerResume.pdf'
 
