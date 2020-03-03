@@ -119,13 +119,15 @@ const useMPAPI = (setTicks, setLoaded, setYDomain) => {
           setLoaded(true)
           let upper = 0 
           data.routes.forEach(r => upper < r.y ? upper = r.y : null )
-          console.log(upper)
           setYDomain([0, upper])
 
           setTimeout( 
             () => {
-              setTicks(data)
-              setTimeout( () => setYDomain(undefined), 400)
+              if(mounted)
+                  setTicks(data)
+              setTimeout( () => {
+                if(mounted)
+                  setYDomain(undefined)}, 400)
             }, 200)
           ;
         } 

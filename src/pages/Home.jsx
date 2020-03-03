@@ -59,7 +59,6 @@ function Home({ loading }) {
 
     let f = window.innerWidth > 600 ? 95 : 159
     let h = document.getElementById("header").offsetHeight
-    console.log(w,f,h)
     setBlurbHeight(w - f - h)
   }, [])
 

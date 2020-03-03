@@ -6,6 +6,7 @@ import themes from "./styles/themes";
 import { Header, Main, Footer} from "./pages/layouts";
 import routes from "./routes";
 import ScrollToTop from "./components/ScrollToTop";
+import { useLocation } from "react-router-dom";
 
 import {
   BrowserRouter as Router,
@@ -19,9 +20,19 @@ import { ThemeProvider } from "styled-components";
 window.secretMessage = "please hire mme";
 
 const App = withRouter(props => {
-  let [loading, setLoading] = useState(true);
-  let [theme, setTheme] = useState("main");
-  let [themeUserSelected, setThemeUserSelected] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [theme, setTheme] = useState("main");
+  const [themeUserSelected, setThemeUserSelected] = useState(false);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    //delay the scroll until everything is rendered otherwise the window won't scroll to the top
+    //this bug only occurs on firefox... i don't yet understand why
+    //the cause may be lazy loading the pages based on route
+
+    window.scrollTo(0, 0)
+
+  }, [pathname]);
 
   // useEffect(() => {
   //   let timer = setTimeout(() => setLoading(false), 5000);
@@ -51,7 +62,6 @@ const App = withRouter(props => {
 
   return (
     <ThemeProvider theme={themes[theme]}>
-      <ScrollToTop />
       <Header routes={routes} />
       <Main className="main">
         <Switch>
@@ -71,6 +81,7 @@ const App = withRouter(props => {
       </Main>
       <Footer/>
       <GlobalStyles />
+      <ScrollToTop />
     </ThemeProvider>
   );
 });
