@@ -1,5 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 
+var isFirefox = typeof InstallTrigger !== 'undefined';
+
+
 export default createGlobalStyle`
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Oswald|Roboto&display=swap');
   
@@ -15,11 +18,11 @@ export default createGlobalStyle`
     outline: 0;
   }
   html{
-    scroll-behavior: smooth;
-    overflow: auto;
+    scroll-behavior: ${isFirefox ? 'auto' : 'smooth'};
   }
   
   html, body, #app{
+    
     width: 100%;
     height: 100%;
     margin: 0px;

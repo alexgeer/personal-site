@@ -198,16 +198,16 @@ const MPTicks = () => {
             react-vis, a component library built around d3, and is developed by
             Uber.
           </p>
-          {loaded && 
+          
           <div style={{ marginBottom: "15px" }}>
             
-            <StyledButton onClick={() => setSelected("routes")}>
+            <StyledButton disabled={!loaded} onClick={() => setSelected("routes")}>
               routes
             </StyledButton>
-            <StyledButton onClick={() => setSelected("boulders")}>
+            <StyledButton disabled={!loaded} onClick={() => setSelected("boulders")}>
               boulders
             </StyledButton>
-          </div>}
+          </div>
           <Graph loaded={loaded} yDomain={yDomain} data={ticks[selected]} />
         </div>
         {/* {loading && <Spinner cnProp = {'spinner'}/>} */}

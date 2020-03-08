@@ -62,7 +62,7 @@ let ResumeDL = styled.div`
   }
 
   a:hover {
-    background:  ${({ theme }) => theme.color3};
+    background: ${({ theme }) => theme.color3};
   }
 
   i {
@@ -73,6 +73,7 @@ let ResumeDL = styled.div`
 function Work() {
   return (
     <PageWrapper>
+
       <Container>
         <h2 className="page-header">Work</h2>
         <ResumeDL>
@@ -83,7 +84,10 @@ function Work() {
           </a>
         </ResumeDL>
         <div className="container-content">
-          <h3>Innovias</h3><a className='inline-link' href="https://www.innovias.com/"><em>www.innovias.com</em></a>
+          <h3>Innovias</h3>
+          <a className="inline-link" href="https://www.innovias.com/">
+            <em>www.innovias.com</em>
+          </a>
           <h4> Web Developer Intern</h4>
           <h4> July 2018 - March 2019</h4>
           <p className="container-text">
@@ -116,12 +120,13 @@ function Work() {
           <p className="container-text">
             There was an existing app, but I was tasked with refactoring it into
             ES6 and ended up rewriting 80-90% of the original code, including a
-            new DB schema. 
+            new DB schema.
           </p>
           <p className="container-text">
-            The components of the business problem were a calendar to display events to customers, 
-            an admin UI to post, edit, and remove events, and a registration process that automatically integrated contact 
-            and registration/payment data into their CRM and accounting software. 
+            The components of the business problem were a calendar to display
+            events to customers, an admin UI to post, edit, and remove events,
+            and a registration process that automatically integrated contact and
+            registration/payment data into their CRM and accounting software.
           </p>
           <p className="container-text">
             The front end was made with React. I wrote all the reusable form

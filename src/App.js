@@ -18,6 +18,10 @@ import {
 import { ThemeProvider } from "styled-components";
 
 window.secretMessage = "please hire mme";
+if (history.scrollRestoration) {
+  history.scrollRestoration = 'manual';
+}
+
 
 const App = withRouter(props => {
   const [loading, setLoading] = useState(true);
@@ -81,7 +85,6 @@ const App = withRouter(props => {
       </Main>
       <Footer/>
       <GlobalStyles />
-      <ScrollToTop />
     </ThemeProvider>
   );
 });
@@ -90,6 +93,7 @@ export default App;
 
 ReactDOM.render(
   <Router>
+    <ScrollToTop />
     <App />
   </Router>,
   document.getElementById("app")
