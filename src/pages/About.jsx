@@ -15,7 +15,7 @@ function About() {
     <PageWrapper>
       <Container>
       <h2 className='page-header'>About</h2>
-      <Portrait src="images/el-cap.jpg"/>
+      <Portrait src="images/portrait.jpg"/>
 
       <div className='container-content'>
         <p className='container-text'>
