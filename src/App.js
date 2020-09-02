@@ -25,7 +25,7 @@ if (history.scrollRestoration) {
 
 const App = withRouter(props => {
   const [loading, setLoading] = useState(true);
-  const [theme, setTheme] = useState("main");
+  const [theme, setTheme] = useState("dark");
   const [themeUserSelected, setThemeUserSelected] = useState(false);
   const { pathname } = useLocation();
 
@@ -44,25 +44,6 @@ const App = withRouter(props => {
   //   //cleanup
   //   return () => clearTimeout(timer);
   // }, []);
-
-  useEffect(() => {
-    if (!themeUserSelected) {
-      switch (props.location.pathname) {
-        case "/":
-          setTheme("main");
-          break;
-        case "/about":
-          setTheme("main");
-          break;
-        case "/examples":
-          setTheme("bw");
-          break;
-        case "/work":
-          setTheme("dark");
-          break;
-      }
-    }
-  });
 
   return (
     <ThemeProvider theme={themes[theme]}>

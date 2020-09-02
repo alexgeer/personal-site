@@ -27,7 +27,7 @@ flex-direction: column;
     li{
         margin: 8px;
         color: ${({theme}) => theme.color3};
-        font-size: 20px;
+        font-size: 18px;
     }
 }
 `
