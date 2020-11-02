@@ -1,11 +1,10 @@
 import { createGlobalStyle } from "styled-components";
 
-var isFirefox = typeof InstallTrigger !== 'undefined';
 
 
 export default createGlobalStyle`
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Oswald|Roboto&display=swap');
-  
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&family=Merriweather&display=swap');
   * {
     margin: 0;
     padding: 0;
@@ -18,7 +17,7 @@ export default createGlobalStyle`
     outline: 0;
   }
   html{
-    scroll-behavior: ${isFirefox ? 'auto' : 'smooth'};
+    scroll-behavior: 'smooth';
   }
   
   html, body, #app{

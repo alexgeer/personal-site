@@ -74,11 +74,7 @@ function Home({ loading }) {
         ref={scrollRef}>
 
         <h4 className ="greeting">Hi there.</h4>
-         <p>I built this site as a way to show my skills with React. Since I don't have many projects to show for examples of my work,
-         I designed the site to include a few less-than-standard features.</p> 
-         <p>The styling library I used, styled-components, has powerful
-         theming. To showcase that the theme changes based on route. You can apply a theme to the whole site by using the theme picker,
-         which you'll find on the 'e.g' page. </p>
+         <p>I built this site as a way to show my skills with React. </p> 
          <p> You'll find my resume and work examples on the 'work' page </p>
          <p> The repo for this site is <a href ="https://github.com/alexgeer/personal-site"> here </a> </p>
         </Blurb>

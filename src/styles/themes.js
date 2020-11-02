@@ -26,8 +26,8 @@ themes.dark =
     color2: '#FEFEFE',
     color3: '#FFFFFF',
     landingTextColor: '#FEFEFE',
-    font1:"Futura,Trebuchet MS,Arial,sans-serif;",
-    font2:"Futura,Trebuchet MS,Arial,sans-serif;",
+    font1:"'Inconsolata', monospace;",
+    font2:"'Inconsolata', monospace;",
     h2weight: '700',
     inputBackground: 'rgba(255,255,255,0.75)',
     hover: 'grey'
