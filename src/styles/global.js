@@ -17,7 +17,7 @@ export default createGlobalStyle`
     outline: 0;
   }
   html{
-    scroll-behavior: 'smooth';
+    scroll-behavior: smooth;
   }
   
   html, body, #app{
