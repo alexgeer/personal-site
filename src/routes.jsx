@@ -2,6 +2,7 @@ import React from "react";
 import Home from "./pages/Home";
 import styled from 'styled-components'
 import {blinking} from './styles/anim'
+import ScrollToTop from './components/ScrollToTop'
 
 const About = React.lazy(() =>
   import(/* webpackChunkName: "about" */ "./pages/About")
@@ -58,6 +59,8 @@ const routes = [
     main: () => (
       <React.Suspense fallback={<StyledFallBack/>}>
         <About />
+        <ScrollToTop/>
+
       </React.Suspense>
     )
   },
@@ -71,6 +74,8 @@ const routes = [
           setTheme={setTheme}
           setThemeUserSelected={setThemeUserSelected}
         />
+        <ScrollToTop/>
+
       </React.Suspense>
     )
   },
@@ -80,6 +85,8 @@ const routes = [
     main: () => (
       <React.Suspense fallback={<StyledFallBack/>}>
         <Work />
+        <ScrollToTop/>
+
       </React.Suspense>
     )
   },

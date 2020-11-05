@@ -1,5 +1,4 @@
 import React from "react";
-import MPTicks from "../components/MPTicks";
 import ThemePicker from "../components/ThemePicker";
 import Container from "./layouts/Container";
 import PageWrapper from "./layouts/PageWrapper";
@@ -20,6 +19,7 @@ const StyledThemePicker = styled(ThemePicker)`
 function Examples({ setTheme, setThemeUserSelected, currentTheme }) {
   return (
     <PageWrapper>
+      
       <h2 className="page-header">Examples</h2>
       <h3 className="subheader">
         Some examples of React components, async calls, etc
@@ -44,7 +44,6 @@ function Examples({ setTheme, setThemeUserSelected, currentTheme }) {
         </div>
       </Container>
 
-      <MPTicks />
     </PageWrapper>
   );
 }

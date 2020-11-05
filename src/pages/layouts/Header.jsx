@@ -88,20 +88,21 @@ function Header({ routes, timing }) {
   let [visible, setVisible] = useState(true);
   let [prevScrollPosition, setPrevScrollPosition] = useState(0);
 
-  let handleScroll = () => {
-    const currentScrollPos = window.pageYOffset;
-    setVisible(
-      (prevScrollPosition > currentScrollPos) | (currentScrollPos <= 0)
-    );
-    setPrevScrollPosition(currentScrollPos);
-  };
+  // let handleScroll = () => {
+  //   const currentScrollPos = window.pageYOffset;
+  //   setVisible(
+  //     (prevScrollPosition > currentScrollPos) | (currentScrollPos <= 0)
+  //   );
+  //   setPrevScrollPosition(currentScrollPos);
+  // };
 
-  // did mount
-  useEffect(() => window.addEventListener("scroll", handleScroll));
-  //will unmount
-  useEffect(() => () => window.removeEventListener("scroll", handleScroll));
+  // // did mount
+  // useEffect(() => window.addEventListener("scroll", handleScroll));
+  // //will unmount
+  // useEffect(() => () => window.removeEventListener("scroll", handleScroll));
 
   let cn = visible ? "" : "hidden";
+
   return (
     <header >
       <Container id="header" className={cn}>
@@ -111,7 +112,7 @@ function Header({ routes, timing }) {
               <Brand to="/">ALEX</Brand>
             </li>
             {routes.map((route, index) => {
-
+                
               if(route.path === "/")
                   return
               return (

@@ -2,8 +2,8 @@ import React, {useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import PageWrapper from "./layouts/PageWrapper";
 import HeroText from "../components/HeroText";
-import { blinking, fadeIn } from "../styles/anim";
-
+import { blinking } from "../styles/anim";
+import ScrollToTop from "../components/ScrollToTop"
 const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -64,6 +64,7 @@ function Home({ loading }) {
 
   return (
     <PageWrapper className={loading ? "loading" : "loaded"}>
+      <ScrollToTop/>
       <HomeContainer>
         <LearnMore  onClick={() => executeScroll()}>
           <i className="fas fa-arrow-circle-down fa-3x"></i>

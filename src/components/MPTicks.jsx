@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled, { withTheme } from "styled-components";
-import getAPI from "./DynamicAPI";
+// import getAPI from "./DynamicAPI";
 import Container from "../pages/layouts/Container";
 
 import {
@@ -91,58 +91,58 @@ const Graph = withTheme(({ data, theme, loaded, yDomain }) => {
   );
 });
 
-const useMPAPI = (setTicks, setLoaded, setYDomain) => {
-  let mounted = false;
-  useEffect(() => {
-    mounted = true;
-    //we have to define the async func w/i the hook
-    let call = async () => {
-      try {
-        //call dynamic import
-        /**
-         * since the API call only happens in this component we can
-         * greatly diminish the bundle size (33%!!) by splitting the AWS modules import off in its own file
-         */
-        const API = await getAPI();
-        const data = await API.get("api", "/ticks");
+// const useMPAPI = (setTicks, setLoaded, setYDomain) => {
+//   let mounted = false;
+//   useEffect(() => {
+//     mounted = true;
+//     //we have to define the async func w/i the hook
+//     let call = async () => {
+//       try {
+//         //call dynamic import
+//         /**
+//          * since the API call only happens in this component we can
+//          * greatly diminish the bundle size (33%!!) by splitting the AWS modules import off in its own file
+//          */
+//         const API = await getAPI();
+//         const data = await API.get("api", "/ticks");
 
-        // //map the routes to the ticks
-        // data.ticks.forEach(t => {
-        //   let found = data.routes.find(r => r.id === t.routeId);
-        //   //add the route to the tick
-        //   t.route = found;
-        // });
+//         // //map the routes to the ticks
+//         // data.ticks.forEach(t => {
+//         //   let found = data.routes.find(r => r.id === t.routeId);
+//         //   //add the route to the tick
+//         //   t.route = found;
+//         // });
      
 
         
-        if (mounted) {
-          setLoaded(true)
-          let upper = 0 
-          data.routes.forEach(r => upper < r.y ? upper = r.y : null )
-          setYDomain([0, upper])
+//         if (mounted) {
+//           setLoaded(true)
+//           let upper = 0 
+//           data.routes.forEach(r => upper < r.y ? upper = r.y : null )
+//           setYDomain([0, upper])
 
-          setTimeout( 
-            () => {
-              if(mounted)
-                  setTicks(data)
-              setTimeout( () => {
-                if(mounted)
-                  setYDomain(undefined)}, 400)
-            }, 200)
-          ;
-        } 
-        // setLoading(false);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    //call it right aways
-    call();
-    return () => {
-      mounted = false;
-    };
-  }, []);
-};
+//           setTimeout( 
+//             () => {
+//               if(mounted)
+//                   setTicks(data)
+//               setTimeout( () => {
+//                 if(mounted)
+//                   setYDomain(undefined)}, 400)
+//             }, 200)
+//           ;
+//         } 
+//         // setLoading(false);
+//       } catch (err) {
+//         console.error(err);
+//       }
+//     };
+//     //call it right aways
+//     call();
+//     return () => {
+//       mounted = false;
+//     };
+//   }, []);
+// };
 
 const MPTicks = () => {
   //initial value for tick data
@@ -172,7 +172,7 @@ const MPTicks = () => {
   const [yDomain, setYDomain] = useState([0,10]);
   const [selected, setSelected] = useState("routes");
 
-  useMPAPI(setTicks, setLoaded, setYDomain);
+  // useMPAPI(setTicks, setLoaded, setYDomain);
 
   return (
     <StyledContainer className="material-container">

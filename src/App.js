@@ -29,21 +29,6 @@ const App = withRouter(props => {
   const [themeUserSelected, setThemeUserSelected] = useState(false);
   const { pathname } = useLocation();
 
-  useEffect(() => {
-    //delay the scroll until everything is rendered otherwise the window won't scroll to the top
-    //this bug only occurs on firefox... i don't yet understand why
-    //the cause may be lazy loading the pages based on route
-
-    window.scrollTo(0, 0)
-
-  }, [pathname]);
-
-  // useEffect(() => {
-  //   let timer = setTimeout(() => setLoading(false), 5000);
-
-  //   //cleanup
-  //   return () => clearTimeout(timer);
-  // }, []);
 
   return (
     <ThemeProvider theme={themes[theme]}>
@@ -74,7 +59,7 @@ export default App;
 
 ReactDOM.render(
   <Router>
-    <ScrollToTop />
+   
     <App />
   </Router>,
   document.getElementById("app")
