@@ -11,11 +11,8 @@ const HomeContainer = styled.div`
 
 const LearnMore = styled.button`
   background: unset;
-  position: absolute;
-  top: 90%;
-  right: 47%;
-  opacity: 0;
   color: ${({ theme }) => theme.color3};
+  margin: -200px auto 200px auto;
   animation: ${blinking} 3s infinite;
   animation-delay: 2s;
 
@@ -66,10 +63,11 @@ function Home({ loading }) {
     <PageWrapper className={loading ? "loading" : "loaded"}>
       <ScrollToTop/>
       <HomeContainer>
-        <LearnMore  onClick={() => executeScroll()}>
+        
+        <HeroText />
+        <LearnMore margin={blurbHeight - 100} onClick={() => executeScroll()}>
           <i className="fas fa-arrow-circle-down fa-3x"></i>
         </LearnMore>
-        <HeroText />
         <Blurb 
         height={blurbHeight}
         ref={scrollRef}>
