@@ -41,7 +41,6 @@ const Footer = () => {
       <a href="https://github.com/alexgeer">
         <img src="images/github.png" />
       </a>
-      <a href="tel:1-904-699-5831">1.904.699.5831</a>
     </FooterContainer>
   );
 };
