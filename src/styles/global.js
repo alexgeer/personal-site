@@ -59,7 +59,7 @@ export default createGlobalStyle`
     cursor: pointer;
   }
 
-  .material-container {
+  /* .material-container {
     border: 1px solid rgba(0,0,0,0.3);
     transition: 0.3s ease-in;
     
@@ -79,7 +79,7 @@ export default createGlobalStyle`
     text-decoration: none;
     text-transform: uppercase;
     
-  }
+  } */
 
   a.inline-link {
       color: ${props => props.theme.color3}

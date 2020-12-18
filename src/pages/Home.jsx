@@ -3,7 +3,9 @@ import styled from "styled-components";
 import PageWrapper from "./layouts/PageWrapper";
 import HeroText from "../components/HeroText";
 import { blinking } from "../styles/anim";
-import ScrollToTop from "../components/ScrollToTop"
+import ScrollToTop from "../components/ScrollToTop";
+import {LinkButton} from '../components/Button';
+
 const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -21,7 +23,7 @@ const LearnMore = styled.button`
 `;
 
 const Blurb = styled.div`
-padding-top: 20px;
+padding-top: 50px;
 height: ${ ({height}) => height }px;
 min-height: 400px;
 
@@ -33,11 +35,15 @@ line-height: 2.0;
 p {
   margin: 10px 0;
 }
-a {
-  text-decoration: underline;
+
+.link-button {
+  margin: 0 auto;
+  width: 200px;
+  display: block;
+  margin-top: 100px;
 }
 
-a:hover {color: ${ ({theme}) => theme.color3};}
+
 
 `
 
@@ -75,7 +81,7 @@ function Home({ loading }) {
         <h4 className ="greeting">Hi there.</h4>
          <p>I built this site as a way to show my skills with React. </p> 
          <p> You'll find my resume and work examples on the 'work' page </p>
-         <p> The repo for this site is <a href ="https://github.com/alexgeer/personal-site"> here </a> </p>
+         <LinkButton href ="https://github.com/alexgeer/personal-site" className='link-button'> Go To Repo</LinkButton>
         </Blurb>
       </HomeContainer>
     </PageWrapper>

@@ -76,6 +76,8 @@ p{
   @media (orientation: landscape) {
     
 }
+
+
 `;
 
 export default Wrapper;

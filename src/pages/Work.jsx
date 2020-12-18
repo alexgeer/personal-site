@@ -1,6 +1,6 @@
 import React from "react";
 import PageWrapper from "./layouts/PageWrapper";
-import Container from "./layouts/Container";
+import {Container} from "./layouts/Container";
 import styled from "styled-components";
 
 let StackContainer = styled.div`
