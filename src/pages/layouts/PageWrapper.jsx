@@ -12,7 +12,6 @@ width: 100%;
 
 display: flex;
 flex-direction: column;
-justify-content: center;
 
  color:${(props) => props.theme.color1};
 
@@ -64,8 +63,8 @@ p{
 
 /* desktop  */
 @media only screen and (min-width: 600px) {
-    margin: 70px auto 0px;
-    padding: 0 40px 40px 40px;
+    margin: 0 auto;
+    padding: 70px 40px 100px 40px;
     max-width: 900px; 
 
     .page-header {

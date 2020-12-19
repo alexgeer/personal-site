@@ -33,8 +33,10 @@ const App = withRouter(props => {
   return (
     <ThemeProvider theme={themes[theme]}>
       <ScrollToTop/>
-      <Header routes={routes} />
+      
       <Main className="main">
+        <Header routes={routes} />
+
         <Switch>
           {routes.map( (route, index) => (
             <Route
@@ -49,8 +51,9 @@ const App = withRouter(props => {
             />
           ))}
         </Switch>
-      </Main>
       <Footer/>
+
+      </Main>
       <GlobalStyles />
     </ThemeProvider>
   );

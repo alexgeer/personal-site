@@ -1,19 +1,35 @@
 import React from "react";
 import styled from "styled-components";
 
+
+const pickFilter = (name) => {
+
+  if(name === 'dark'){
+    return 'invert(1)'
+  } else {
+    return 'none'
+  }
+
+}
+
 const FooterContainer = styled.footer`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
   margin: 0px auto;
-  padding: 10px 0px 10px 0px;
-  background: ${({ theme }) => theme.navBackground};
-
+  background: ${({ theme }) => theme.footerBackground || theme.navBackground};
+  width: 100%;
+  /*stick to bottom of main which is pos:relative*/
+  position: absolute;
+  bottom: 0;
+  height: 100px;
+  padding: 15px 0;
   img {
     height: 50px;
     width: 50px;
-    border-radius: 100%
+    border-radius: 100%;
+    filter: ${({theme}) => pickFilter(theme.name)}
   }
 
   a {
@@ -31,6 +47,7 @@ const FooterContainer = styled.footer`
 
   @media only screen and (min-width: 600px) {
     flex-direction: row;
+    height: 80px
   }
 `;
 

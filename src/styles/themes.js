@@ -21,7 +21,8 @@ themes.dark =
 {
     name:'dark',
     background: 'rgb(10, 10, 10)',
-    navBackground: 'rgb(10, 10, 10)', //dark blue
+    navBackground: 'rgb(10, 10, 10)', 
+    footerBackground: '#292929',
     color1: '#FFFFFF', 
     color2: '#FEFEFE',
     color3: '#eccb5c',
@@ -43,7 +44,8 @@ themes.dark =
         color3: '#6b38FB',
         landingTextColor: '#212121',
         font1:"'Roboto', sans-serif",
-        font2:"'Roboto', sans-serif"
+        font2:"'Roboto', sans-serif",
+        footerBackground: '#e6e5e5'
     }
 
 
