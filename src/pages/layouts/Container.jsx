@@ -29,6 +29,11 @@ export const Container = styled.div`
       position: relative;
       top: 2px;
   }
+
+  .expander:hover {
+    color: ${({theme}) => theme.color3};
+  
+  }
   .container-text {
     margin-bottom: 14px;
   }

@@ -69,7 +69,7 @@ function Home({ loading }) {
     <PageWrapper className={loading ? "loading" : "loaded"}>
       <ScrollToTop/>
       <HomeContainer>
-        
+      
         <HeroText />
         <LearnMore margin={blurbHeight - 100} onClick={() => executeScroll()}>
           <i className="fas fa-arrow-circle-down fa-3x"></i>

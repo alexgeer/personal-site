@@ -24,7 +24,7 @@ themes.dark =
     navBackground: 'rgb(10, 10, 10)', //dark blue
     color1: '#FFFFFF', 
     color2: '#FEFEFE',
-    color3: '#FFFFFF',
+    color3: '#eccb5c',
     landingTextColor: '#FEFEFE',
     font1:"'Inconsolata', monospace;",
     font2:"'Inconsolata', monospace;",

@@ -25,8 +25,7 @@ const BackDiv = styled.div`
     opacity: 1;
     color: ${({ theme }) => theme.color3};
     word-break: break-word !important;
-    font-weight: 700;
-    font-size: 25px;
+    font-size: 29px;
   }
 
   .first {
