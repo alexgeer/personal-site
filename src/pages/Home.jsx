@@ -67,7 +67,6 @@ function Home({ loading }) {
 
   return (
     <PageWrapper className={loading ? "loading" : "loaded"}>
-      <ScrollToTop/>
       <HomeContainer>
       
         <HeroText />

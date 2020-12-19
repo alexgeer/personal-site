@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import {blinking} from './styles/anim'
 import ScrollToTop from './components/ScrollToTop'
 
+
 const About = React.lazy(() =>
   import(/* webpackChunkName: "about" */ "./pages/About")
 );
@@ -27,7 +28,7 @@ const NoMatch = ( {className} ) =>
 
 const StyledFallBack = styled(FallBack)`
 text-align: center;
-height: 1000px;
+height: 500px;
 padding-top: 30%;
 animation: ${blinking} .9s infinite;
 `
@@ -59,7 +60,6 @@ const routes = [
     main: () => (
       <React.Suspense fallback={<StyledFallBack/>}>
         <About />
-        <ScrollToTop/>
 
       </React.Suspense>
     )
@@ -74,7 +74,6 @@ const routes = [
           setTheme={setTheme}
           setThemeUserSelected={setThemeUserSelected}
         />
-        <ScrollToTop/>
 
       </React.Suspense>
     )
@@ -85,7 +84,6 @@ const routes = [
     main: () => (
       <React.Suspense fallback={<StyledFallBack/>}>
         <Work />
-        <ScrollToTop/>
 
       </React.Suspense>
     )
@@ -96,5 +94,23 @@ const routes = [
       main: () => <StyledNoMatch/>
   }
 ];
+
+
+const routes2 = [
+  {
+    path: "/",
+    exact: true,
+    label: "/",
+    main: () => <Home />
+  },
+  {
+    path: "/about",
+    sidebar: () => <div>About</div>,
+    label: "about",
+    main: () => (
+        <About />
+    )
+  }
+]
 
 export default routes;

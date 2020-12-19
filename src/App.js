@@ -18,9 +18,9 @@ import {
 import { ThemeProvider } from "styled-components";
 
 window.secretMessage = "please hire mme";
-if (history.scrollRestoration) {
-  history.scrollRestoration = 'manual';
-}
+// if (history.scrollRestoration) {
+//   history.scrollRestoration = 'manual';
+// }
 
 
 const App = withRouter(props => {
@@ -32,6 +32,7 @@ const App = withRouter(props => {
 
   return (
     <ThemeProvider theme={themes[theme]}>
+      <ScrollToTop/>
       <Header routes={routes} />
       <Main className="main">
         <Switch>
