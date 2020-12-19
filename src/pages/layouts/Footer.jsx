@@ -11,7 +11,7 @@ const FooterContainer = styled.footer`
   background: ${({ theme }) => theme.navBackground};
 
   img {
-    height: auto;
+    height: 50px;
     width: 50px;
     border-radius: 100%
   }
