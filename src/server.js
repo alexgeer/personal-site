@@ -6,7 +6,7 @@ const path   = require("path")
 const app = express()
 
 //network variables
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 8080
 
 logger.log(`starting, env=${process.env.NODE_ENV}`)
 //turn on live reload for development
@@ -35,6 +35,9 @@ app.get('/lol', (req, res) => {
 // Handles any requests that don't match the ones above
 app.get('*', (req,res) =>{
     logger.log('get', req.ip)
+    res.set('Cache Control', 'no-cache, no-store, must-revalidate')
+    res.set('Pragma', '0')
+
     res.sendFile(path.join(__dirname,'index.html'));
 });
 

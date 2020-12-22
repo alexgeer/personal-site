@@ -20,11 +20,8 @@ const FooterContainer = styled.footer`
   margin: 0px auto;
   background: ${({ theme }) => theme.footerBackground || theme.navBackground};
   width: 100%;
-  /*stick to bottom of main which is pos:relative*/
-  position: absolute;
-  bottom: 0;
-  height: 100px;
-  padding: 15px 0;
+  /*stick to bottom of main*/
+  flex-shrink: 0;
   img {
     height: 50px;
     width: 50px;

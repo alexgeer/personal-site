@@ -4,7 +4,7 @@ import {fadeIn} from '../../styles/anim'
 
 
 let Wrapper = styled.div`
-
+flex: 1 0 auto;
 animation: ${fadeIn} 0.4s;
 
 padding: 65px 8px 0px 8px;;
