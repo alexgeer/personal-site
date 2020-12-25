@@ -5,7 +5,8 @@ themes.main =
 {
     name:'light',
     homeBackground:'url("images/hallway-efe-kurnaz.jpg")',
-    background: '#dfdfdf',
+    background: 'rgb(223,223,223)',
+    transBg: 'rgba(223,223,223, 0)',
     navBackground: '#afafaf', //translucent #a0a0a0
     color1: '#00000099', //light grey
     color2: '#000000aa', //lighter grey
@@ -21,6 +22,7 @@ themes.dark =
 {
     name:'dark',
     background: 'rgb(10, 10, 10)',
+    transBg: 'rgba(10, 10, 10, 0)',
     navBackground: 'rgb(10, 10, 10)', 
     footerBackground: '#292929',
     color1: '#FFFFFF', 
@@ -38,6 +40,7 @@ themes.dark =
         name:'docs',
         homeBackground: 'url("images/boot-2.jpg")',
         background: 'white',
+        transBg: 'rgba(255,255,255, 0)',
         navBackground: 'rgb(255,255,255)', //translucent #a0a0a0
         color1: '#212121', //
         color2: '#616161',

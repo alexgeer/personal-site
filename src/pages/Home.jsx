@@ -18,7 +18,6 @@ const LearnMore = styled.button`
   animation: ${blinking} 3s infinite;
   animation-delay: 2s;
 
-  z-index: 2;
 
 `;
 
@@ -78,7 +77,7 @@ function Home({ loading }) {
         height={blurbHeight}
         ref={scrollRef}>
 
-        <h4 className ="greeting">Hi there.</h4>
+        <h4 className ="greeting">Hi theres.</h4>
          <p>I built this site as a way to show my skills with React. </p> 
          <p> You'll find my resume and work examples on the 'work' page </p>
          <LinkButton href ="https://github.com/alexgeer/personal-site" className='link-button'> Go To Repo</LinkButton>

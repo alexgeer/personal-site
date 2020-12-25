@@ -40,26 +40,17 @@ const BackDiv = styled.div`
             left: 0%;
             width: 100%;
             height: 300px;
+            background: linear-gradient(
+                    ${ ({theme}) => theme.transBg} 0%, 
+                    ${ ({theme}) => theme.background} 100%);
             background: -webkit-linear-gradient(
-                    #FFFFFF00 0%,
+                    ${ ({theme}) => theme.transBg} 0%,
                     ${ ({theme}) => theme.background} 100%
             );
-            /* background-image: -moz-linear-gradient(
-                    ${ ({theme}) => theme.background} 0%,
-                    rgba(255, 255, 255, 1) 100%
+            background: -moz-linear-gradient( 
+                    ${ ({theme}) => theme.transBg} 0%,
+                    ${ ({theme}) => theme.background} 100%
             );
-            background-image: -o-linear-gradient(
-                    ${ ({theme}) => theme.background} 0%,
-                    rgba(255, 255, 255, 1) 100%
-            );
-            background-image: linear-gradient(
-                    ${ ({theme}) => theme.background} 0%,
-                    rgba(255, 255, 255, 1) 100%
-            );
-            background-image: -ms-linear-gradient(
-                    ${ ({theme}) => theme.background} 0%,
-                    rgba(255, 255, 255, 1) 100%
-            ); */
         }
 
   @media only screen and (max-width: 400px) {
