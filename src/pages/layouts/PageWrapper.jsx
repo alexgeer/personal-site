@@ -64,7 +64,7 @@ p{
 /* desktop  */
 @media only screen and (min-width: 600px) {
     margin: 0 auto;
-    padding: 70px 40px 100px 40px;
+    padding: 70px 40px 0px 40px;
     max-width: 900px; 
 
     .page-header {
