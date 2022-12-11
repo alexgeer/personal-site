@@ -28,7 +28,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.11.5",
     "aws-amplify": "^2.3.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "livereload": "^0.9.1",
     "moment": "^2.27.0",
     "react": "^16.13.1",
